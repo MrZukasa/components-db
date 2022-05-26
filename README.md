@@ -43,3 +43,4 @@
   - rivenditore3
   - note
 
+Devo usare un API in PHP per fare il .json
