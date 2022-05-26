@@ -26,3 +26,20 @@
   @tailwind utilities;
   ```
 - Aggiungo react-router-dom con `npm install react-router-dom`
+
+### Ipotesi DB
+- Database 'Archivio'
+- Tabella 'Componenti'
+- Campi:
+  - id
+  - codice custom
+  - codice costruttore
+  - descirizione
+  - quantita
+  - posizione
+  - costruttore
+  - rivenditore1
+  - rivenditore2
+  - rivenditore3
+  - note
+
