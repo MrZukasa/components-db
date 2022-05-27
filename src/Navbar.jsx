@@ -6,10 +6,9 @@ const Navbar = () => {
             <div className="NavTitle" class="NavTitle">
                 <p>Components DB</p>
             </div>
-            
             <div className="links" class="m-auto">
-                <Link to="/" class="pr-5 cursor-pointer hover:text-violet-400">Home</Link>
-                <Link to="/Create" class="pr-5 cursor-pointer hover:text-violet-400">Create</Link>
+                <Link to="/"><div class="inline-flex pr-5 cursor-pointer transform hover:text-violet-400 hover:scale-110 transition ease-in-out duration-300">Home</div></Link>
+                <Link to="/Create"><div class="inline-flex pr-5 cursor-pointer transform hover:text-violet-400 hover:scale-110 transition ease-in-out duration-300">Create</div></Link>
             </div>
         </nav>
     );

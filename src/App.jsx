@@ -13,8 +13,8 @@ function App() {
       <div className="App">
         <Navbar/>
         <div className="content">
-          <Switch>                        
-            <Route exact path="/">        
+          <Switch>
+            <Route exact path="/">
               <Home/>
             </Route>
             <Route path="/create">
@@ -30,7 +30,7 @@ function App() {
         </div>
       </div>
     </Router>
-  );
+  )
 }
 
 export default App;

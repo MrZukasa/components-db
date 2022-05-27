@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis:wght@300&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Libre+Barcode+39+Text&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,8 +10,8 @@
     @apply bg-slate-800 text-gray-300
   }
   .NavTitle{
-    font-family: 'Caveat', cursive;
-    @apply text-7xl text-violet-400 max-w-xl m-auto mb-4 hover:animate-pulse
+    font-family: 'Libre Barcode 39 Text', cursive;
+    @apply text-7xl text-violet-400 max-w-xl m-auto mb-4 animate-pulse
   }
 }
 
