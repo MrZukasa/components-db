@@ -26,6 +26,7 @@
   @tailwind utilities;
   ```
 - Aggiungo react-router-dom con `npm install react-router-dom`
+- Link per info su [MySql](https://www.youtube.com/watch?v=XxZwe9HB5ow&list=PLCakfctNSHkFDTFczqhXNv-nYMHvLMT1H&index=2)
 
 ### Ipotesi DB
 - Database 'Archivio'
@@ -43,4 +44,7 @@
   - rivenditore3
   - note
 
-Devo usare un API in PHP per fare il .json
+### Flow
+- Definizione componenti, import e routing
+- Stile delle pagine più semplici e Dark mode e importo il font
+

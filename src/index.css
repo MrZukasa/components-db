@@ -1,16 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis:wght@300&family=Lato&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base{
+  html {    
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Dosis', sans-serif;
+    @apply bg-slate-800 text-gray-300
+  }
+  .NavTitle{
+    font-family: 'Caveat', cursive;
+    @apply text-7xl text-violet-400 max-w-xl m-auto mb-4 hover:animate-pulse
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.error {
+  @apply text-violet-300 flex justify-start mt-1 p-10
+}
+
+.content {
+  @apply max-w-5xl mt-2 ml-auto mr-auto p-5;
+}
+
+input {
+  @apply block py-2.5 px-0 w-full text-base text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none 
+  dark:text-white dark:border-gray-600 dark:focus:border-violet-400 focus:outline-none focus:ring-0 focus:border-violet-400
+}
+
+label {
+  @apply peer-focus:font-medium absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 
+  top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-focus:dark:text-violet-400 peer-placeholder-shown:scale-100 
+  peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6
 }
