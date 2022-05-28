@@ -27,6 +27,9 @@
   ```
 - Aggiungo react-router-dom con `npm install react-router-dom@5` dato che uso `Switch`
 - Link per info su [MySql](https://www.youtube.com/watch?v=XxZwe9HB5ow&list=PLCakfctNSHkFDTFczqhXNv-nYMHvLMT1H&index=2)
+- Installo la dependencie per usare i file .ENV `npm install dotenv`
+- Aggiungo Express per avere un URL per l'API sul mio DB MySql `npm install express body-parser mysql`
+- Installo la dependencie per il cors (errore di connessione di [express](https://expressjs.com/en/resources/middleware/cors.html#:~:text=CORS%20is%20a%20node.,enable%20CORS%20with%20various%20options.)) con `npm install cors`
 
 ### Ipotesi DB
 - Database 'Archivio'
@@ -43,8 +46,13 @@
   - rivenditore2
   - rivenditore3
   - note
+  
+![Database](https://i.ibb.co/NNSdvD4/db.png)
 
 ### Flow
 - Definizione componenti, import e routing
 - Stile delle pagine più semplici e Dark mode e importo il font
+- Creo il Database e la struttura record in creazione
+- Configuro API e Fetch (express e AXIOS)
+  - per far girare il backend faccio `node .\src\db.js`
 

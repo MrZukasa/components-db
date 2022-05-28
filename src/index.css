@@ -11,16 +11,12 @@
   }
   .NavTitle{
     font-family: 'Libre Barcode 39 Text', cursive;
-    @apply text-7xl text-violet-400 max-w-xl m-auto mb-4 animate-pulse
+    @apply text-7xl text-violet-400 max-w-xl m-auto mt-4 mb-4 animate-pulse
   }
 }
 
-.error {
-  @apply text-violet-300 flex justify-start mt-1 p-10
-}
-
 .content {
-  @apply max-w-5xl mt-2 ml-auto mr-auto p-5;
+  @apply mb-auto mt-auto m-20;
 }
 
 input {
