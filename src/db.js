@@ -30,7 +30,13 @@ app.post(insert,(req,res) => {
     const descrizione = req.body.descrizione;
     const sql = 'INSERT INTO componenti (codice, descrizione) VALUES (?, ?);';
     db.query(sql,[codice, descrizione], (err, result) => {
-        res.send(result);
+        if (err!==null){
+            console.log(err.message);
+            res.send(err.message);
+        } else {
+            console.log(JSON.stringify(result));
+            res.send(result.message);
+        }
     })
 })
 

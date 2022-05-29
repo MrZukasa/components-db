@@ -26,13 +26,14 @@ const Create = () => {
                 codice : componente.codice,
                 descrizione : componente.descrizione
             })
-        }).then(() => {
+        }).then(result => {
+            console.log(result);
             setSuccess('Inserito con successo!');
             setTimeout(() =>{
                 setSuccess('');
                 window.location.reload();
             },3000)
-        }).catch((e) => {
+        }).catch(e => {
             setError('Errore: ' + e.message);
             setTimeout(() =>{
                 setError('');
@@ -42,7 +43,7 @@ const Create = () => {
 
     return (
         <div className="container" class="content">
-            <form onSubmit={Create}>
+            <form onSubmit={Create} autocomplete="off">
                 <div class="grid grid-cols-4 gap-6">                    
                     <div class="relative z-0 w-full mb-6 group col-span-2">
                         <input type="text" name="codice" class="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)} required/>
