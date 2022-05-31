@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { NULL } from "mysql/lib/protocol/constants/types";
+import { useState } from "react";
 
 const Create = () => {
 
@@ -24,7 +25,15 @@ const Create = () => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 codice : componente.codice,
-                descrizione : componente.descrizione
+                codiceCostruttore : componente.codiceCostruttore,
+                descrizione : componente.descrizione,
+                costruttore : componente.costruttore,
+                quantita : componente.quantita,
+                posizione : componente.posizione,
+                rivenditore1 : componente.rivenditore1,
+                rivenditore2 : componente.rivenditore2,
+                rivenditore3 : componente.rivenditore3,
+                note : componente.note
             })
         }).then(result => {
             console.log(result);
@@ -64,7 +73,11 @@ const Create = () => {
                         <label for="costruttore">Costruttore</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="quantita" class="peer" placeholder=" " value={quantita} onChange={(e)=>setQuantita(e.target.value)}/>
+                        <input type="text" name="quantita" class="peer" required placeholder=" " value={quantita} onChange={(e)=>{
+                            if ((!isNaN(e.target.value) && (e.target.value != " "))){
+                                setQuantita(e.target.value)
+                            }
+                        }}/>
                         <label for="quantita">Quantità</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group">
