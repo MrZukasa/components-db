@@ -1,5 +1,4 @@
-import Create from './Create';
-import ItemDetails from './Item';
+import Details from './Details';
 import NotFound from './NotFound';
 import Search from './Search';
 import Navbar from './Navbar';
@@ -19,11 +18,11 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>          
-            <Route path="/Create">
-              <Create />
+            <Route path="/Details">
+              <Details />
             </Route>
-            <Route path="/Item/:ID">
-              <ItemDetails />
+            <Route path="/Details:ID">
+              <DetailsID />
             </Route>
             <Route path="/Search">
               <Search />

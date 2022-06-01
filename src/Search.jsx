@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const Search = () => {
     const [reader, setReader] = useState([]);
-
+    const navigate = useHistory();
+    
     useEffect(() =>{
-        fetch('http://localhost:3001/Read').then((response) => response.json())
+      fetch('http://localhost:3001/Read')
+        .then((response) => response.json())
         .then((responseData) => {
             console.log(responseData);
             setReader(responseData);
         })
     }, ['http://localhost:3001/Read'])
+
     return (
         <div className="content">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -37,7 +40,7 @@ const Search = () => {
                     <tbody>                        
                         {reader.map((value) =>{
                             return [
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer">
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={() => navigate.push('/Item:'+value.ID)}>
                                     <td hidden class="px-6 py-4">{value.ID}</td>
                                     <td class="px-6 py-4">{value.codice}</td>
                                     <td class="px-6 py-4">{value.cod_costruttore}</td>

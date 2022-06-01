@@ -1,7 +1,6 @@
-import { NULL } from "mysql/lib/protocol/constants/types";
 import { useState } from "react";
 
-const Create = () => {
+const Details = () => {
 
     const [codice, setCodice] = useState('');
     const [codiceCostruttore, setCodiceCostruttre] = useState('');
@@ -17,7 +16,7 @@ const Create = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     
-    const Create = (e) => {
+    const insert = (e) => {
         e.preventDefault();
         const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
         fetch('http://localhost:3001/Insert',{
@@ -52,7 +51,7 @@ const Create = () => {
 
     return (
         <div className="container" class="content">
-            <form onSubmit={Create} autocomplete="off">
+            <form onSubmit={insert} autocomplete="off">
                 <div class="grid grid-cols-4 gap-6">                    
                     <div class="relative z-0 w-full mb-6 group col-span-2">
                         <input type="text" name="codice" class="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)} required/>
@@ -116,4 +115,4 @@ const Create = () => {
     );
 }
  
-export default Create;
+export default Details;
