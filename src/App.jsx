@@ -1,4 +1,5 @@
 import Details from './Details';
+import DetailsID from './DetailsID';
 import NotFound from './NotFound';
 import Search from './Search';
 import Navbar from './Navbar';
@@ -21,7 +22,7 @@ function App() {
             <Route path="/Details">
               <Details />
             </Route>
-            <Route path="/Details:ID">
+            <Route path="/DetailsID/:ID">
               <DetailsID />
             </Route>
             <Route path="/Search">

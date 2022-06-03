@@ -40,7 +40,7 @@ const Search = () => {
                     <tbody>                        
                         {reader.map((value) =>{
                             return [
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={() => navigate.push('/Item:'+value.ID)}>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={() => navigate.push('/DetailsID/:'+value.ID)}>
                                     <td hidden class="px-6 py-4">{value.ID}</td>
                                     <td class="px-6 py-4">{value.codice}</td>
                                     <td class="px-6 py-4">{value.cod_costruttore}</td>

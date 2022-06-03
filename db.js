@@ -9,6 +9,9 @@ dotenv.config({ path: './.env' });
 
 const insert = process.env.ENDPOINT_INSERT;
 const read = process.env.ENDPOINT_READ;
+const deleteURL = process.env.ENDPOINT_DELETE;
+const updateURL = process.env.ENDPOINT_UPDATE;
+const readID = process.env.ENDPOINT_READ_ID;
 const port = process.env.PORT;
 const host = process.env.HOSTNAME;
 const user = process.env.USER;
@@ -60,6 +63,62 @@ app.get(read,(req, res)=>{
             console.log(result);            
             res.send(result);
         }        
+    })
+})
+
+app.delete(deleteURL,(req, res)=>{
+    const sql = 'DELETE FROM '+ process.env.TABLE + ' WHERE ID = ' + req.params.ID + ';';
+    console.log(sql);
+    db.query(sql, (err, result) => {
+        if (err!==null){
+            console.log(err.message);
+            res.send(err);
+        } else {
+            console.log(result);
+            res.send(result);
+        }
+    })
+})
+
+app.patch(updateURL,(req, res)=>{
+
+    const codice = req.body.codice;
+    const codiceCostruttore = req.body.codiceCostruttore;
+    const descrizione = req.body.descrizione;
+    const costruttore = req.body.costruttore;
+    const quantita = req.body.quantita;
+    const posizione = req.body.posizione;
+    const rivenditore1 = req.body.rivenditore1;
+    const rivenditore2 = req.body.rivenditore2;
+    const rivenditore3 = req.body.rivenditore3;
+    const note = req.body.note;
+
+    const sql = 'UPDATE '+ process.env.TABLE + 'SET Codice = ' + codice + ', ' +
+    
+    ' WHERE ID = ' + req.params.ID + ';';
+    console.log(sql);
+    db.query(sql, (err, result) => {
+        if (err!==null){
+            console.log(err.message);
+            res.send(err);
+        } else {
+            console.log(result);
+            res.send(result);
+        }
+    })
+})
+
+app.get(readID,(req, res)=>{
+    const sql = 'SELECT * FROM '+ process.env.TABLE +' WHERE ID = ' + req.params.ID + ';';
+    console.log(sql);
+    db.query(sql, (err, result) => {
+        if (err!==null){
+            console.log(err.message);
+            res.send(err);
+        } else {
+            console.log(result);            
+            res.send(result);
+        }
     })
 })
 

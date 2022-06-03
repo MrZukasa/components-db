@@ -55,4 +55,5 @@
 - Creo il Database e la struttura record in creazione
 - Configuro API e Fetch (express e AXIOS)
   - per far girare il backend faccio `node .\src\db.js`
+- configurare [Heroku](https://id.heroku.com/login) per far girare il server node.
 

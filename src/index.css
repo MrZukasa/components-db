@@ -29,3 +29,8 @@ label {
   top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-violet-400 peer-focus:dark:text-violet-400 peer-placeholder-shown:scale-100 
   peer-placeholder-shown:translate-y-0 peer-focus:scale-90 peer-focus:-translate-y-6
 }
+
+.bottone {
+  @apply text-white bg-violet-500 hover:bg-violet-700 focus:ring-1 focus:outline-none focus:ring-violet-300 font-medium 
+  rounded-lg text-base w-full sm:w-auto px-5 py-2.5 text-center
+}
