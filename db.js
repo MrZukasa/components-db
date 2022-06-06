@@ -60,7 +60,7 @@ app.get(read,(req, res)=>{
             console.log(err.message);
             res.send(err);
         } else {
-            console.log(result);            
+            // console.log(result);
             res.send(result);
         }        
     })
@@ -81,7 +81,6 @@ app.delete(deleteURL,(req, res)=>{
 })
 
 app.patch(updateURL,(req, res)=>{
-
     const codice = req.body.codice;
     const codiceCostruttore = req.body.codiceCostruttore;
     const descrizione = req.body.descrizione;
@@ -93,11 +92,13 @@ app.patch(updateURL,(req, res)=>{
     const rivenditore3 = req.body.rivenditore3;
     const note = req.body.note;
 
-    const sql = 'UPDATE '+ process.env.TABLE + 'SET Codice = ' + codice + ', ' +
-    
-    ' WHERE ID = ' + req.params.ID + ';';
+    console.log(codice);
+
+    const sql = 'UPDATE '+ process.env.TABLE + `SET codice = (?), 
+                cod_costruttore = (?), descrizione = (?), costruttore = (?), quantita = (?), posizione = (?),
+                rivenditore1 = (?), rivenditore2 = (?), rivenditore3 = (?), note = (?) WHERE ID = ` + req.params.ID + ';';
     console.log(sql);
-    db.query(sql, (err, result) => {
+    db.query(sql, [codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
         if (err!==null){
             console.log(err.message);
             res.send(err);
@@ -116,7 +117,7 @@ app.get(readID,(req, res)=>{
             console.log(err.message);
             res.send(err);
         } else {
-            console.log(result);            
+            // console.log(result);
             res.send(result);
         }
     })
