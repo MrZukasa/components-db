@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "./Modal";
 
 const Details = () => {
 
@@ -12,12 +13,12 @@ const Details = () => {
     const [rivenditore2, setRivenditore2] = useState('');
     const [rivenditore3, setRivenditore3] = useState('');
     const [note,setNote] = useState('');
-
-    const [success, setSuccess] = useState('');
-    const [error, setError] = useState('');
+    const [response,setResponse] = useState('');
+    const [showModal, setShowModal] = useState(false);
     
     const insert = (e) => {
         e.preventDefault();
+        setShowModal(true);
         const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
         fetch('http://localhost:3001/Insert',{
             method: 'POST',
@@ -36,16 +37,9 @@ const Details = () => {
             })
         }).then(result => {
             console.log(result);
-            setSuccess('Inserito con successo!');
-            setTimeout(() =>{
-                setSuccess('');
-                window.location.reload();
-            },3000)
+            setResponse('Inserito con successo!');
         }).catch(e => {
-            setError('Errore: ' + e.message);
-            setTimeout(() =>{
-                setError('');
-            },3000)
+            setResponse('Errore: ' + e.message);
         })
     }
 
@@ -75,8 +69,7 @@ const Details = () => {
                         <input type="text" name="quantita" class="peer" required placeholder=" " value={quantita} onChange={(e)=>{
                             if ((!isNaN(e.target.value) && (e.target.value != " "))){
                                 setQuantita(e.target.value)
-                            }
-                        }}/>
+                            }}}/>
                         <label for="quantita">Quantità</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group">
@@ -105,12 +98,8 @@ const Details = () => {
                     </div>
                 </div>
                 <button type="submit" class="bottone">Aggiungi</button>
-            </form>
-            <br />
-            <div class="flex text-gray-400 text-xl"> Response: &nbsp;
-                { success && <div class=" text-green-500 text-xl flex animate-pulse">{success}</div>}
-                { error && <div class=" text-red-400 text-xl flex animate-pulse">{error}</div> }            
-            </div>
+                <Modal showModal={showModal} onClose={()=> setShowModal(false)} response={response} />                
+            </form>            
         </div>
     );
 }

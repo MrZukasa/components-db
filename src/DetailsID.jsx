@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 const DetailsID = () => {
@@ -15,17 +15,15 @@ const DetailsID = () => {
     const [note,setNote] = useState('');
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
-    const [reader, setReader] = useState([]);
     const navigate = useHistory();
     const {ID} = useParams();
-    const clearID = ID.split(':');    
+    const clearID = ID.split(':');
     
     useEffect(() => {        
         fetch('http://localhost:3001/Read/'+ clearID[1])
         .then((response) => response.json())
         .then((responseData) => {            
             if (responseData.length !== 0) {
-                setReader(responseData);
                 responseData.map((resultant)=>{
                     setCodice(resultant.codice)
                     setCodiceCostruttre(resultant.cod_costruttore)
