@@ -26,10 +26,10 @@ const db = mysql.createConnection({
 });
 
 app.use(cors());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post(insert,(req,res) => {
+app.post(insert,(req, res) => {
     const codice = req.body.codice;
     const codiceCostruttore = req.body.codiceCostruttore;
     const descrizione = req.body.descrizione;
@@ -45,11 +45,11 @@ app.post(insert,(req,res) => {
     db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
         if (err!==null){
             console.log(err.message);
-            res.send(err);
+            res.status(400).send(err.message);
         } else {
             console.log(JSON.stringify(result));
             res.send(result);
-        }
+        }        
     })
 })
 

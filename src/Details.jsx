@@ -13,12 +13,11 @@ const Details = () => {
     const [rivenditore2, setRivenditore2] = useState('');
     const [rivenditore3, setRivenditore3] = useState('');
     const [note,setNote] = useState('');
-    const [response,setResponse] = useState('');
+    const [response,setResponse] = useState('Checking status');
     const [showModal, setShowModal] = useState(false);
     
     const insert = (e) => {
-        e.preventDefault();
-        setShowModal(true);
+        e.preventDefault();        
         const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
         fetch('http://localhost:3001/Insert',{
             method: 'POST',
@@ -38,9 +37,10 @@ const Details = () => {
         }).then(result => {
             console.log(result);
             setResponse('Inserito con successo!');
-        }).catch(e => {
-            setResponse('Errore: ' + e.message);
-        })
+        }).catch(e => {            
+            setResponse('Error: ' + e.message);            
+        })        
+        setShowModal(true);
     }
 
     return (
@@ -98,7 +98,10 @@ const Details = () => {
                     </div>
                 </div>
                 <button type="submit" class="bottone">Aggiungi</button>
-                <Modal showModal={showModal} onClose={()=> setShowModal(false)} response={response} />                
+                <Modal showModal={showModal} onClose={()=> {
+                    setShowModal(false);
+                    setResponse('Checking status');
+                    }} response={response} />                
             </form>            
         </div>
     );

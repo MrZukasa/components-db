@@ -56,4 +56,6 @@
 - Configuro API e Fetch (express e AXIOS)
   - per far girare il backend faccio `node .\src\db.js`
 - configurare [Heroku](https://id.heroku.com/login) per far girare il server node.
+- Installo React Parallax Hover per il logo `npm i react-parallax-hover`
 
+> N.B. forse è meglio usare axios e react query https://www.youtube.com/watch?v=6tEu9Hz7zcU

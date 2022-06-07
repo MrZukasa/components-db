@@ -17,12 +17,12 @@ const Modal = (modale) => {
                     {/*header*/}
                     <div className="flex items-start justify-between p-5 border-b border-solid border-slate-300 bg-slate-700 rounded-t">
                       <p className="text-2xl font-semibold">
-                        Response
+                        Information
                       </p>                      
                     </div>
                     {/*body*/}
-                    <div className="relative p-6 flex-auto">
-                      <p className="my-4 text-slate-300 text-lg leading-relaxed italic text-center">
+                    <div className="relative p-3 flex-auto">
+                      <p className="my-4 text-slate-300 text-lg leading-relaxed text-center pr-10 pl-10">
                         {modale.response}
                       </p>
                     </div>
