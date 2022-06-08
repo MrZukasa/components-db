@@ -57,5 +57,6 @@
   - per far girare il backend faccio `node .\src\db.js`
 - configurare [Heroku](https://id.heroku.com/login) per far girare il server node.
 - Installo React Parallax Hover per il logo `npm i react-parallax-hover`
+- Installo Nodemon (serve a non riavviare node ad ogni modifica)
 
 > N.B. forse è meglio usare axios e react query https://www.youtube.com/watch?v=6tEu9Hz7zcU

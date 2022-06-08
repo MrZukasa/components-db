@@ -26,7 +26,7 @@ const db = mysql.createConnection({
 });
 
 app.use(cors());
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.post(insert,(req, res) => {
@@ -43,11 +43,9 @@ app.post(insert,(req, res) => {
     
     const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
     db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
-        if (err!==null){
-            console.log(err.message);
+        if (err!==null){            
             res.status(400).send(err.message);
-        } else {
-            console.log(JSON.stringify(result));
+        } else {            
             res.send(result);
         }        
     })
@@ -56,11 +54,9 @@ app.post(insert,(req, res) => {
 app.get(read,(req, res)=>{
     const sql = 'SELECT * FROM '+ process.env.TABLE +';';
     db.query(sql, (err, result) => {
-        if (err!==null){
-            console.log(err.message);
-            res.send(err);
-        } else {
-            // console.log(result);
+        if (err!==null){            
+            res.status(400).send(err.message);
+        } else {            
             res.send(result);
         }        
     })

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
+import axios from "axios";
 
 const Details = () => {
 
@@ -15,31 +16,33 @@ const Details = () => {
     const [note,setNote] = useState('');
     const [response,setResponse] = useState('Checking status');
     const [showModal, setShowModal] = useState(false);
-    
+
+    const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
+        
     const insert = (e) => {
-        e.preventDefault();        
-        const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
-        fetch('http://localhost:3001/Insert',{
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                codice : componente.codice,
-                codiceCostruttore : componente.codiceCostruttore,
-                descrizione : componente.descrizione,
-                costruttore : componente.costruttore,
-                quantita : componente.quantita,
-                posizione : componente.posizione,
-                rivenditore1 : componente.rivenditore1,
-                rivenditore2 : componente.rivenditore2,
-                rivenditore3 : componente.rivenditore3,
-                note : componente.note
+        e.preventDefault();                
+        async function insertData(componente){
+            return await axios.post("http://localhost:3001/Insert",{                
+                    codice : componente.codice,
+                    codiceCostruttore : componente.codiceCostruttore,
+                    descrizione : componente.descrizione,
+                    costruttore : componente.costruttore,
+                    quantita : componente.quantita,
+                    posizione : componente.posizione,
+                    rivenditore1 : componente.rivenditore1,
+                    rivenditore2 : componente.rivenditore2,
+                    rivenditore3 : componente.rivenditore3,
+                    note : componente.note
             })
-        }).then(result => {
+        }
+            
+    insertData(componente)
+        .then(result => {
             console.log(result);
             setResponse('Inserito con successo!');
-        }).catch(e => {            
-            setResponse('Error: ' + e.message);            
-        })        
+        }).catch(e => {
+            setResponse('Error: ' + e.response.data);            
+        })
         setShowModal(true);
     }
 
