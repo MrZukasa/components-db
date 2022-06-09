@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "../Modal";
 import axios from "axios";
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Details = () => {
 
@@ -47,7 +48,8 @@ const Details = () => {
     }
 
     return (
-        <div className="container" class="content">
+        <AnimatePresence>
+        <motion.div className="container" class="content" initial={{opacity: 0, x: -200, y: 0}} animate={{ opacity: 1, x: 0, y: 0 }} exit={{ opacity: 0, x: 0, y: -100 }} transition={{type: 'linear'}}>
             <form onSubmit={insert} autocomplete="off">
                 <div class="grid grid-cols-4 gap-6">                    
                     <div class="relative z-0 w-full mb-6 group col-span-2">
@@ -106,7 +108,8 @@ const Details = () => {
                     setResponse('Checking status');
                     }} response={response} />                
             </form>            
-        </div>
+        </motion.div>
+        </AnimatePresence>
     );
 }
  

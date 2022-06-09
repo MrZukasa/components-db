@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Libre+Barcode+39+Text&family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Libre+Barcode+39+Text&family=Shadows+Into+Light&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,22 +8,34 @@
     font-family: 'Dosis', sans-serif;
     @apply bg-slate-800 text-gray-300
   }
-  .NavTitle{
-    font-family: 'Libre Barcode 39 Text', cursive;
-    @apply text-7xl text-violet-400 max-w-xl m-auto mt-4 mb-4 animate-pulse
-  }
-  .splash{
-    font-family: 'Marck Script', cursive;
-    @apply text-4xl text-violet-400 justify-end flex ml-5 sticky
-  }
-  .signature{
-    font-family: 'Dosis', sans-serif;
-    @apply text-gray-500 flex text-base mt-3 italic
-  }
-  .card{
-    font-family: 'Dosis', sans-serif;
-    @apply text-base flex fixed mt-10 ml-10 opacity-90 
-  }
+}
+
+.App{
+  @apply flex flex-col h-screen
+}
+
+.NavTitle {
+  font-family: 'Libre Barcode 39 Text', cursive;
+  @apply text-7xl text-violet-400 max-w-xl m-auto mt-4 mb-4 animate-pulse
+}
+
+.quote {
+  font-family: 'Shadows Into Light', cursive;
+  @apply text-4xl text-yellow-300 my-1 mx-1 italic animate-pulse
+}
+
+.signature {
+  font-family: 'Dosis', sans-serif;
+  @apply text-gray-400 text-base italic my-1 mx-2
+}
+
+.card {
+  font-family: 'Dosis', sans-serif;
+  @apply text-base flex mt-10 ml-10 opacity-80
+}
+
+.end {
+  @apply absolute bottom-20 right-10
 }
 
 .content {

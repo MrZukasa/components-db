@@ -58,5 +58,7 @@
 - configurare [Heroku](https://id.heroku.com/login) per far girare il server node.
 - Installo React Parallax Hover per il logo `npm i react-parallax-hover`
 - Installo Nodemon (serve a non riavviare node ad ogni modifica)
+- Con [Axios](https://www.npmjs.com/package/axios) si gestiscono gli errori in maniera decisamente più completa vedi [qui](https://www.youtube.com/watch?v=6tEu9Hz7zcU)
+- Aggiungo Framer Motion `npm install framer-motion` e [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroller)
 
-> N.B. forse è meglio usare axios e react query https://www.youtube.com/watch?v=6tEu9Hz7zcU
+>N.B come fa ad essere cosi smooth https://dev.to/jameswallis/animating-next-js-page-transitions-with-framer-motion-1g9j

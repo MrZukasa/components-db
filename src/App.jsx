@@ -1,36 +1,16 @@
-import Details from './Details';
-import DetailsID from './DetailsID';
-import NotFound from './NotFound';
-import Search from './Search';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Home from './Home';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, useLocation} from 'react-router-dom';
+import AnimatedRoutes from '../src/AnimatedRoutes';
 
 
 function App() {
-  
+
   return (
     <Router>
-      <div className="App" class="flex flex-col h-screen">
-        <Navbar />        
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>          
-            <Route path="/Details">
-              <Details />
-            </Route>
-            <Route path="/DetailsID/:ID">
-              <DetailsID />
-            </Route>
-            <Route path="/Search">
-              <Search />
-            </Route>            
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>        
+      <div className="App">
+        <Navbar />          
+          <AnimatedRoutes />
         <Footer />
       </div>
     </Router>

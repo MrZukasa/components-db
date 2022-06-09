@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const DetailsID = () => {
 
@@ -71,7 +72,7 @@ const DetailsID = () => {
     }
     
     return (
-        <div className="container" class="content">            
+        <motion.div className="container" class="content" initial={{opacity: 0, x: -200, y: 0}} animate={{ opacity: 1, x: 0, y: 0 }} exit={{ opacity: 0, x: 0, y: -100 }} transition={{type: 'linear'}}>
                     <form autocomplete="off">
                         <div class="grid grid-cols-4 gap-6">
                             <div class="relative z-0 w-full mb-6 group col-span-2">
@@ -133,7 +134,7 @@ const DetailsID = () => {
                         { success && <div class=" text-green-500 text-xl flex animate-pulse">{success}</div>}
                         { error && <div class=" text-red-400 text-xl flex animate-pulse">{error}</div> }            
                     </div>                
-        </div>
+        </motion.div>
     );
 }
  
