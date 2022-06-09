@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import Transition from "./Transition";
+import { motion } from 'framer-motion';
 
 const Modal = (modale) => {
 
@@ -11,7 +11,7 @@ const Modal = (modale) => {
     if (!modale.response.includes('Error')) {
       return (
               <>
-              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+              <motion.div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
                   <div className="relative w-auto my-6 mx-auto max-w-md">
                     {/*content*/}
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-800 outline-none focus:outline-none text-gray-300">
@@ -36,15 +36,15 @@ const Modal = (modale) => {
                         </button>
                       </div>
                     </div>
-                  </div>
-              </div>
+                  </div>                  
+              </motion.div>
               <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
               </>
               )
     } else {
       return (
               <>
-              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+              <motion.div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
                   <div className="relative w-auto my-6 mx-auto max-w-md">
                     {/*content*/}
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-800 outline-none focus:outline-none text-gray-300">
@@ -69,8 +69,8 @@ const Modal = (modale) => {
                         </button>
                       </div>
                     </div>
-                  </div>
-              </div>
+                  </div>                  
+              </motion.div>
               <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
               </>
       );

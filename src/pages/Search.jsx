@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Transition from "../Transition";
 import { motion } from 'framer-motion';
 
 const Search = () => {
@@ -15,8 +16,8 @@ const Search = () => {
         })
     }, ['http://localhost:3001/Read'])
 
-    return (
-        <motion.div className="content" initial={{opacity: 0, x: -200, y: 0}} animate={{ opacity: 1, x: 0, y: 0 }} exit={{ opacity: 0, x: 0, y: -100 }} transition={{type: 'linear'}}>
+    return (      
+        <motion.div className="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>          
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-10">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -55,7 +56,7 @@ const Search = () => {
                             })}                          
                     </tbody>
                 </table>
-            </div>       
+            </div>          
         </motion.div>
     );
 }

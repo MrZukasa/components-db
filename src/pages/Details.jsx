@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Modal from "../Modal";
 import axios from "axios";
-import { motion, AnimatePresence } from 'framer-motion';
+import Transition from "../Transition";
+import { motion } from 'framer-motion';
 
 const Details = () => {
 
@@ -15,7 +16,7 @@ const Details = () => {
     const [rivenditore2, setRivenditore2] = useState('');
     const [rivenditore3, setRivenditore3] = useState('');
     const [note,setNote] = useState('');
-    const [response,setResponse] = useState('Checking status');
+    const [response,setResponse] = useState('');
     const [showModal, setShowModal] = useState(false);
 
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
@@ -48,8 +49,7 @@ const Details = () => {
     }
 
     return (
-        <AnimatePresence>
-        <motion.div className="container" class="content" initial={{opacity: 0, x: -200, y: 0}} animate={{ opacity: 1, x: 0, y: 0 }} exit={{ opacity: 0, x: 0, y: -100 }} transition={{type: 'linear'}}>
+        <motion.div className="container" class="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
             <form onSubmit={insert} autocomplete="off">
                 <div class="grid grid-cols-4 gap-6">                    
                     <div class="relative z-0 w-full mb-6 group col-span-2">
@@ -109,7 +109,6 @@ const Details = () => {
                     }} response={response} />                
             </form>            
         </motion.div>
-        </AnimatePresence>
     );
 }
  

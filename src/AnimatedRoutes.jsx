@@ -10,7 +10,7 @@ import {AnimatePresence} from 'framer-motion';
 const AnimatedRoutes = () => {
     const location = useLocation();
     return(
-        <AnimatePresence>
+        <AnimatePresence exitBeforeEnter>
             <Route location={location} key={location.pathname}>
                 <Switch>
                     <Route exact path="/">

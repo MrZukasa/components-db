@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
-import {BrowserRouter as Router, Route, Switch, useLocation} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import AnimatedRoutes from '../src/AnimatedRoutes';
 
 

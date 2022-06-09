@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import Transition from '../Transition';
 
 const Home = () => {
 
@@ -11,8 +12,7 @@ const Home = () => {
       };
 
     return (
-        <AnimatePresence>
-        <motion.div style={divStyle} initial={{opacity: 0, x: -200, y: 0}} animate={{ opacity: 1, x: 0, y: 0 }} exit={{ opacity: 0, x: 0, y: -100 }} transition={{type: 'linear'}}>
+        <motion.div style={divStyle} initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
             <div className="card">
                 <Link to="/Details" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-4xl hover:bg-gray-100 hover:scale-105 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-slate-700 mb-3">
                     <img class="object-cover w-full h-96 rounded-t-lg md:h-full md:w-48 md:rounded-none md:rounded-l-lg" src='../img/deskimg.jpg' alt=""/>
@@ -28,9 +28,8 @@ const Home = () => {
             <div className="end">
                 <p className="quote">'Mama always said life was like a box of chocolates. You never know what you're gonna get.'</p>
                 <p className="signature">Forrest Gump</p>
-            </div>
+            </div>            
         </motion.div>
-        </AnimatePresence>
     );
 }
 export default Home;
