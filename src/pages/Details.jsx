@@ -41,7 +41,7 @@ const Details = () => {
     insertData(componente)
         .then(result => {
             console.log(result);
-            setResponse('Inserito con successo!');
+            setResponse('Successfully Inserted!');
         }).catch(e => {
             setResponse('Error: ' + e.response.data);            
         })
@@ -104,9 +104,8 @@ const Details = () => {
                 </div>
                 <button type="submit" class="bottone">Aggiungi</button>
                 <Modal showModal={showModal} onClose={()=> {
-                    setShowModal(false);
-                    setResponse('Checking status');
-                    }} response={response} />                
+                    setShowModal(false);                    
+                    }} response={response} />
             </form>            
         </motion.div>
     );

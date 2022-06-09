@@ -3,7 +3,7 @@ import { ParallaxHover } from 'react-parallax-hover';
 
 const Navbar = () => {
     return (        
-        <nav className="navbar" class="flex justify-center border-b-2 border-gray-600 bg-slate-900">
+        <nav className="navbar" class="flex justify-center border-b border-gray-600 bg-slate-800">
             <div className="NavTitle" class="NavTitle">
                 <ParallaxHover width={485} height={90} borderRadius={0} shadow={0} rotation={5} shine={0} scale={2} className="parallax">
                     <p className="text-center mt-2">Components DB</p>

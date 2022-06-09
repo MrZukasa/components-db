@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import Modal from "../Modal";
+import axios from "axios";
 import Transition from "../Transition";
 import { motion } from 'framer-motion';
 
@@ -15,11 +17,13 @@ const DetailsID = () => {
     const [rivenditore2, setRivenditore2] = useState('');
     const [rivenditore3, setRivenditore3] = useState('');
     const [note,setNote] = useState('');
-    const [success, setSuccess] = useState('');
-    const [error, setError] = useState('');
     const navigate = useHistory();
+    const [response,setResponse] = useState('');
+    const [showModal, setShowModal] = useState(false);
     const {ID} = useParams();
     const clearID = ID.split(':');
+
+    const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
     
     useEffect(() => {        
         fetch('http://localhost:3001/Read/'+ clearID[1])
@@ -52,11 +56,8 @@ const DetailsID = () => {
     }
 
     const Edit = ()=> {
-        const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
-        fetch('http://localhost:3001/Update/'+ clearID[1],{
-            method: 'PATCH',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
+        async function updateData(componente){
+            return await axios.patch("http://localhost:3001/Update/"+clearID[1],{
                 codice : componente.codice,
                 codiceCostruttore : componente.codiceCostruttore,
                 descrizione : componente.descrizione,
@@ -68,8 +69,15 @@ const DetailsID = () => {
                 rivenditore3 : componente.rivenditore3,
                 note : componente.note
             })
-        }).then((response) => response.json())
-        .then((data) => console.log(data))
+        }
+    updateData(componente)
+        .then(result => {
+            console.log(result);
+            setResponse('Updated Successfully!');
+        }).catch(e => {
+            setResponse('Error: ' + e.response.data);
+        })
+        setShowModal(true);
     }
     
     return (
@@ -129,12 +137,10 @@ const DetailsID = () => {
                 </div>
                 <button type="button" class="bottone" onClick={Edit}>Applica Modifiche</button>
                 <button type="button" class="bottone ml-2" onClick={Remove}>Elimina</button>
+                <Modal showModal={showModal} onClose={()=> {
+                    setShowModal(false);
+                    }} response={response} />
             </form>
-            <br />
-            <div class="flex text-gray-400 text-xl"> Response: &nbsp;
-                { success && <div class=" text-green-500 text-xl flex animate-pulse">{success}</div>}
-                { error && <div class=" text-red-400 text-xl flex animate-pulse">{error}</div> }            
-            </div>
         </motion.div>
     );
 }
