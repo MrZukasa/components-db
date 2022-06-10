@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Modal from "../Modal";
 import axios from "axios";
 import Transition from "../Transition";
@@ -18,6 +19,7 @@ const Details = () => {
     const [note,setNote] = useState('');
     const [response,setResponse] = useState('');
     const [showModal, setShowModal] = useState(false);
+    const navigate = useHistory();
 
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
         
@@ -104,7 +106,10 @@ const Details = () => {
                 </div>
                 <button type="submit" class="bottone">Aggiungi</button>
                 <Modal showModal={showModal} onClose={()=> {
-                    setShowModal(false);                    
+                    setShowModal(false);
+                    if (response.includes('Succ')==true) {
+                        navigate.push('/Search');
+                    }
                     }} response={response} />
             </form>            
         </motion.div>

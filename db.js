@@ -103,13 +103,10 @@ app.patch(updateURL,(req, res)=>{
 
 app.get(readID,(req, res)=>{
     const sql = 'SELECT * FROM '+ process.env.TABLE +' WHERE ID = ' + req.params.ID + ';';
-    console.log(sql);
     db.query(sql, (err, result) => {
         if (err!==null){
-            console.log(err.message);
-            res.send(err);
+            res.status(400).send(err.message);
         } else {
-            // console.log(result);
             res.send(result);
         }
     })

@@ -2,17 +2,18 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Transition from "../Transition";
 import { motion } from 'framer-motion';
+import axios from "axios";
 
 const Search = () => {
     const [reader, setReader] = useState([]);
     const navigate = useHistory();
     
     useEffect(() =>{
-      fetch('http://localhost:3001/Read')
-        .then((response) => response.json())
-        .then((responseData) => {
-            console.log(responseData);
-            setReader(responseData);
+      async function readData(){
+        return await axios.get('http://localhost:3001/Read')
+      }
+      readData().then((responseData) => {            
+            setReader(responseData.data);            
         })
     }, ['http://localhost:3001/Read'])
 
@@ -53,7 +54,7 @@ const Search = () => {
                                     <td class="px-6 py-4">{value.quantita}</td>
                                 </tr>
                                 ]
-                            })}                          
+                            })}
                     </tbody>
                 </table>
             </div>          

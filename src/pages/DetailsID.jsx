@@ -25,12 +25,15 @@ const DetailsID = () => {
 
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
     
-    useEffect(() => {        
-        fetch('http://localhost:3001/Read/'+ clearID[1])
-        .then((response) => response.json())
+    useEffect(() => {
+        async function readData() {
+            return await axios.get('http://localhost:3001/Read/'+ clearID[1])
+        }
+        readData()
         .then((responseData) => {            
             if (responseData.length !== 0) {
-                responseData.map((resultant)=>{
+                console.log(responseData.data);
+                responseData.data.map((resultant)=>{
                     setCodice(resultant.codice)
                     setCodiceCostruttre(resultant.cod_costruttore)
                     setDescrizione(resultant.descrizione)
@@ -46,7 +49,7 @@ const DetailsID = () => {
                 navigate.push('/NotFound');
             }
         })
-    },[]);
+    },[clearID[1]]);
 
     const Remove = ()=> {
         async function deleteData(){
