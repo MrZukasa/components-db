@@ -49,10 +49,13 @@ const DetailsID = () => {
     },[]);
 
     const Remove = ()=> {
-        fetch('http://localhost:3001/Delete/'+ clearID[1],{
-            method: 'DELETE',
-        }).then((response) => response.json())
-        .then((data) => console.log(data))
+        async function deleteData(){
+            return await axios.delete('http://localhost:3001/Delete/'+ clearID[1])            
+        }
+        deleteData()
+            .then(() => setResponse('Deleted Successfully!'))
+            .catch(e => setResponse('Error: ' + e.response.data))
+        setShowModal(true);
     }
 
     const Edit = ()=> {
@@ -80,7 +83,7 @@ const DetailsID = () => {
             })
             setShowModal(true);
         } else {
-            setResponse('Error: Non può esistere un Codice, una Descrizione ed una Quantità');
+            setResponse('Error: Codice, Descrizione e Quantità sono sempre richiesti');
             setShowModal(true);
         }
     }
@@ -144,6 +147,9 @@ const DetailsID = () => {
                 <button type="button" class="bottone ml-2" onClick={Remove}>Elimina</button>
                 <Modal showModal={showModal} onClose={()=> {
                     setShowModal(false);
+                    if (response.includes('Deleted')==true) {
+                        navigate.push('/Search');
+                    }
                     }} response={response} />
             </form>
         </motion.div>

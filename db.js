@@ -67,7 +67,7 @@ app.delete(deleteURL,(req, res)=>{
     console.log(sql);
     db.query(sql, (err, result) => {
         if (err!==null){
-            console.log(err.message);
+            res.status(400).send(err.message);
             res.send(err);
         } else {
             console.log(result);
