@@ -4,7 +4,7 @@ import DetailsID from './pages/DetailsID';
 import NotFound from './pages/NotFound';
 import Search from './pages/Search';
 import Home from './pages/Home';
-import {BrowserRouter as Router, Route, Switch, useLocation} from 'react-router-dom';
+import {Route, Switch, useLocation} from 'react-router-dom';
 import {AnimatePresence} from 'framer-motion';
 
 const AnimatedRoutes = () => {

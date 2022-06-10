@@ -56,28 +56,33 @@ const DetailsID = () => {
     }
 
     const Edit = ()=> {
-        async function updateData(componente){
-            return await axios.patch("http://localhost:3001/Update/"+clearID[1],{
-                codice : componente.codice,
-                codiceCostruttore : componente.codiceCostruttore,
-                descrizione : componente.descrizione,
-                costruttore : componente.costruttore,
-                quantita : componente.quantita,
-                posizione : componente.posizione,
-                rivenditore1 : componente.rivenditore1,
-                rivenditore2 : componente.rivenditore2,
-                rivenditore3 : componente.rivenditore3,
-                note : componente.note
+        if ((componente.codice != '')&&(componente.descrizione != '')&&(componente.quantita != '')){
+            async function updateData(componente){
+                return await axios.patch("http://localhost:3001/Update/"+clearID[1],{
+                    codice : componente.codice,
+                    codiceCostruttore : componente.codiceCostruttore,
+                    descrizione : componente.descrizione,
+                    costruttore : componente.costruttore,
+                    quantita : componente.quantita,
+                    posizione : componente.posizione,
+                    rivenditore1 : componente.rivenditore1,
+                    rivenditore2 : componente.rivenditore2,
+                    rivenditore3 : componente.rivenditore3,
+                    note : componente.note
+                })
+            }
+        updateData(componente)
+            .then(result => {
+                console.log(result);
+                setResponse('Updated Successfully!');
+            }).catch(e => {
+                setResponse('Error: ' + e.response.data);
             })
+            setShowModal(true);
+        } else {
+            setResponse('Error: Non può esistere un Codice, una Descrizione ed una Quantità');
+            setShowModal(true);
         }
-    updateData(componente)
-        .then(result => {
-            console.log(result);
-            setResponse('Updated Successfully!');
-        }).catch(e => {
-            setResponse('Error: ' + e.response.data);
-        })
-        setShowModal(true);
     }
     
     return (
