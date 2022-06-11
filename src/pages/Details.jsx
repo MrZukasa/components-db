@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useEffect} from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import Modal from "../Modal";
 import axios from "axios";
 import Transition from "../Transition";
@@ -20,13 +20,29 @@ const Details = () => {
     const [response,setResponse] = useState('');
     const [showModal, setShowModal] = useState(false);
     const navigate = useHistory();
+    const cloning = useLocation();
 
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
+
+    if (cloning.state != undefined) {
+        useEffect(() => {
+            console.log(cloning.state);
+            setCodiceCostruttre(cloning.state.codiceCostruttore);
+            setDescrizione(cloning.state.descrizione);
+            setCostruttore(cloning.state.costruttore);
+            setQuantita(cloning.state.quantita);
+            setPosizione(cloning.state.posizione);
+            setRivenditore1(cloning.state.rivenditore1);
+            setRivenditore2(cloning.state.rivenditore2);
+            setRivenditore3(cloning.state.rivenditore3);
+            setNote(cloning.state.note);
+        },[cloning])
+    }
         
     const insert = (e) => {
         e.preventDefault();                
         async function insertData(componente){
-            return await axios.post("http://localhost:3001/Insert",{                
+            return await axios.post("http://localhost:3001/Insert",{
                     codice : componente.codice,
                     codiceCostruttore : componente.codiceCostruttore,
                     descrizione : componente.descrizione,
@@ -41,12 +57,8 @@ const Details = () => {
         }
             
     insertData(componente)
-        .then(result => {
-            console.log(result);
-            setResponse('Successfully Inserted!');
-        }).catch(e => {
-            setResponse('Error: ' + e.response.data);            
-        })
+        .then(() => setResponse('Successfully Inserted!'))
+        .catch(e => setResponse('Error: ' + e.response.data))
         setShowModal(true);
     }
 
@@ -56,7 +68,7 @@ const Details = () => {
                 <div class="grid grid-cols-4 gap-6">                    
                     <div class="relative z-0 w-full mb-6 group col-span-2">
                         <input type="text" name="codice" class="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)} required/>
-                        <label for="codice">Codice</label>                        
+                        <label for="codice">Codice</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group col-span-2">
                         <input type="text" name="codiceCostruttore" class="peer" placeholder=" " value={codiceCostruttore} onChange={(e)=>setCodiceCostruttre(e.target.value)}/>

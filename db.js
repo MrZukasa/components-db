@@ -64,13 +64,10 @@ app.get(read,(req, res)=>{
 
 app.delete(deleteURL,(req, res)=>{
     const sql = 'DELETE FROM '+ process.env.TABLE + ' WHERE ID = ' + req.params.ID + ';';
-    console.log(sql);
     db.query(sql, (err, result) => {
         if (err!==null){
             res.status(400).send(err.message);
-            res.send(err);
         } else {
-            console.log(result);
             res.send(result);
         }
     })

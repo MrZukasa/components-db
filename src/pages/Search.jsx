@@ -37,7 +37,7 @@ const Search = () => {
                           </th>
                           <th scope="col" class="px-6 py-3">
                             Quantità
-                          </th>                          
+                          </th>
                         </tr>
                     </thead>
                     <tbody>                        

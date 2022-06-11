@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Modal from "../Modal";
 import axios from "axios";
 import Transition from "../Transition";
 import { motion } from 'framer-motion';
+import Details from "./Details";
 
 const DetailsID = () => {
 
@@ -22,7 +23,6 @@ const DetailsID = () => {
     const [showModal, setShowModal] = useState(false);
     const {ID} = useParams();
     const clearID = ID.split(':');
-
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
     
     useEffect(() => {
@@ -31,8 +31,7 @@ const DetailsID = () => {
         }
         readData()
         .then((responseData) => {            
-            if (responseData.length !== 0) {
-                console.log(responseData.data);
+            if (responseData.length !== 0) {                
                 responseData.data.map((resultant)=>{
                     setCodice(resultant.codice)
                     setCodiceCostruttre(resultant.cod_costruttore)
@@ -62,7 +61,7 @@ const DetailsID = () => {
     }
 
     const Edit = ()=> {
-        if ((componente.codice != '')&&(componente.descrizione != '')&&(componente.quantita != '')){
+        if ((componente.codice != '')&&(componente.descrizione != '')&&(!isNaN(componente.quantita))&&(componente.quantita != '')){
             async function updateData(componente){
                 return await axios.patch("http://localhost:3001/Update/"+clearID[1],{
                     codice : componente.codice,
@@ -78,17 +77,22 @@ const DetailsID = () => {
                 })
             }
         updateData(componente)
-            .then(result => {
-                console.log(result);
-                setResponse('Updated Successfully!');
-            }).catch(e => {
-                setResponse('Error: ' + e.response.data);
-            })
+            .then(() => setResponse('Updated Successfully!'))
+            .catch(e => setResponse('Error: ' + e.response.data))
             setShowModal(true);
+            console.log(componente)
         } else {
             setResponse('Error: Codice, Descrizione e Quantità sono sempre richiesti');
             setShowModal(true);
+            console.log(componente)
         }
+    }
+
+    const Copy = ()=> {
+        navigate.push({
+            pathname: '/Details',
+            state: componente
+        })
     }
     
     return (
@@ -150,10 +154,11 @@ const DetailsID = () => {
                 <button type="button" class="bottone ml-2" onClick={Remove}>Elimina</button>
                 <Modal showModal={showModal} onClose={()=> {
                     setShowModal(false);
-                    if (response.includes('Deleted')==true) {
+                    if (!response.includes("Error")){
                         navigate.push('/Search');
                     }
                     }} response={response} />
+                <button type="button" class="bottone ml-2" onClick={Copy}>Copia Componente</button>
             </form>
         </motion.div>
     );
