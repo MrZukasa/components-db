@@ -9,12 +9,12 @@
   }
 }
 
-body {
+/* body {
   @apply bg-gray-200 dark:bg-slate-800 transition duration-200
-}
+} */
 
 .App{
-  @apply flex flex-col h-screen
+  @apply flex flex-col h-screen bg-gray-200 dark:bg-slate-800 transition duration-200
 }
 
 .NavTitle {

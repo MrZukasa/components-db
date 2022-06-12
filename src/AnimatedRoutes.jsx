@@ -24,7 +24,7 @@ const AnimatedRoutes = () => {
                     </Route>
                     <Route path="/Search">
                         <Search />
-                    </Route>            
+                    </Route>
                     <Route path="*">
                         <NotFound />
                     </Route>
