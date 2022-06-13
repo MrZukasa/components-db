@@ -9,17 +9,13 @@
   }
 }
 
-/* body {
-  @apply bg-gray-200 dark:bg-slate-800 transition duration-200
-} */
-
 .App{
   @apply flex flex-col h-screen bg-gray-200 dark:bg-slate-800 transition duration-200
 }
 
 .NavTitle {
   font-family: 'Libre Barcode 39 Text', cursive;
-  @apply text-7xl text-violet-400 max-w-xl m-auto mt-4 mb-4 animate-pulse
+  @apply text-7xl dark:text-violet-400 text-violet-500 max-w-xl m-auto mt-4 mb-4 animate-pulse
 }
 
 .quote {

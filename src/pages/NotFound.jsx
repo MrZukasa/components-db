@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 const NotFound = () => {
     return (
         <motion.div className="container" class="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
-            <p class="text-violet-300 flex justify-start mt-1 p-10 text-9xl">404 :(</p>
-            <p class="text-violet-300 flex justify-start mt-1 p-10 text-7xl">Page. Not. Found.</p>
+            <p class="dark:text-violet-300 text-violet-500 flex justify-start mt-1 p-10 text-9xl">404 :(</p>
+            <p class="dark:text-violet-300 text-violet-500 flex justify-start mt-1 p-10 text-7xl">Page. Not. Found.</p>
         </motion.div>
     );
 }

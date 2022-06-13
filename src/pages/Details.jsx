@@ -17,16 +17,16 @@ const Details = () => {
     const [rivenditore2, setRivenditore2] = useState('');
     const [rivenditore3, setRivenditore3] = useState('');
     const [note,setNote] = useState('');
+    const [image,setImage] = useState('');
     const [response,setResponse] = useState('');
     const [showModal, setShowModal] = useState(false);
     const navigate = useHistory();
     const cloning = useLocation();
 
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
-
-    if (cloning.state != undefined) {
-        useEffect(() => {
-            console.log(cloning.state);
+    
+    useEffect(() => {
+        if (cloning.state != undefined) {            
             setCodiceCostruttre(cloning.state.codiceCostruttore);
             setDescrizione(cloning.state.descrizione);
             setCostruttore(cloning.state.costruttore);
@@ -36,8 +36,8 @@ const Details = () => {
             setRivenditore2(cloning.state.rivenditore2);
             setRivenditore3(cloning.state.rivenditore3);
             setNote(cloning.state.note);
-        },[cloning])
-    }
+        }
+    },[cloning])
         
     const insert = (e) => {
         e.preventDefault();                
@@ -55,7 +55,6 @@ const Details = () => {
                     note : componente.note
             })
         }
-            
     insertData(componente)
         .then(() => setResponse('Successfully Inserted!'))
         .catch(e => setResponse('Error: ' + e.response.data))
@@ -110,13 +109,27 @@ const Details = () => {
                         <label for="rivenditore3">Terzo rivenditore</label>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 gap-6">
-                <div class="relative z-0 w-full mb-6 group">
+                <div class="grid grid-cols-5 gap-6">
+                    <div class="relative z-0 w-full mb-6 group col-span-3">
                         <input type="text" name="note" class="peer" placeholder=" " value={note} onChange={(e)=>setNote(e.target.value)}/>
                         <label for="note">Note</label>
                     </div>
+                    <div class="relative z-0 w-full mb-6 group col-span-2">
+                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-52 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-slate-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-violet-400 hover:border-violet-500 dark:hover:bg-slate-700 ml-20">
+                            <div class="flex flex-col justify-center items-center pt-5 pb-6">
+                                <svg class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" value={image}/>
+                        </label>
+                    </div>
                 </div>
-                <button type="submit" class="bottone">Aggiungi</button>
+                <div class="grid grid-cols-5 gap-6">
+                    <div class="relative z-0 w-full mb-6 group">
+                        <button type="submit" class="bottone">Aggiungi</button>
+                    </div>                    
+                </div>                
                 <Modal showModal={showModal} onClose={()=> {
                     setShowModal(false);
                     if (response.includes('Succ')==true) {

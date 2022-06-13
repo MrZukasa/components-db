@@ -47,7 +47,7 @@
   - rivenditore3
   - note
   
-![Database](https://i.ibb.co/NNSdvD4/db.png)
+![Database](https://i.ibb.co/4RD3nmq/Cattura.png)
 
 ### Flow
 - Definizione componenti, import e routing
@@ -61,4 +61,7 @@
 - Con [Axios](https://www.npmjs.com/package/axios) si gestiscono gli errori in maniera decisamente più completa vedi [qui](https://www.youtube.com/watch?v=6tEu9Hz7zcU)
 - Aggiungo Framer Motion `npm install framer-motion` e [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroller)
   - Per fare si che sia smooth si usa `<AnimatePresence exitBeforeEnter>` la proprietà exitBeforeEnter serve per non iniziare il render di una animazione fino a che non termina quella prima
-- Aggiungo switch [Dark/Light Mode](https://www.youtube.com/watch?v=2IfTD-muRF4&t=291s)
+- Aggiungo switch [Dark/Light Mode](https://www.youtube.com/watch?v=2IfTD-muRF4&t=291s) 
+  - setto la dark mode all'interno della Local Storage
+- Aggiungo la possibilità di inserire un immagine nel [database](https://www.tutsmake.com/upload-image-in-mysql-db-using-node-js-express-multer/) BLOB.
+  - Aggiungo una dropzone, ma probabilmente ci va un hook apposta perché [droppare](https://www.digitalocean.com/community/tutorials/react-react-dropzone) nella pagina non funziona

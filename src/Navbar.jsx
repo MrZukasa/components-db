@@ -10,9 +10,9 @@ const Navbar = () => {
                 </ParallaxHover>
             </div>
             <div className="links" class="m-auto dark:text-gray-300 text-gray-900 dark:font-normal font-semibold">
-                <Link to="/"><div class="inline-flex pr-5 cursor-pointer transform hover:text-violet-400 hover:scale-110 transition ease-in-out duration-300">Home</div></Link>
-                <Link to="/Details"><div class="inline-flex pr-5 cursor-pointer transform hover:text-violet-400 hover:scale-110 transition ease-in-out duration-300">Insert</div></Link>
-                <Link to="/Search"><div class="inline-flex pr-5 cursor-pointer transform hover:text-violet-400 hover:scale-110 transition ease-in-out duration-300">Search</div></Link>
+                <Link to="/"><div class="inline-flex pr-5 cursor-pointer transform dark:hover:text-violet-400 hover:text-violet-500 hover:scale-110 transition ease-in-out duration-300">Home</div></Link>
+                <Link to="/Details"><div class="inline-flex pr-5 cursor-pointer transform dark:hover:text-violet-400 hover:text-violet-500 hover:scale-110 transition ease-in-out duration-300">Insert</div></Link>
+                <Link to="/Search"><div class="inline-flex pr-5 cursor-pointer transform dark:hover:text-violet-400 hover:text-violet-500 hover:scale-110 transition ease-in-out duration-300">Search</div></Link>
             </div>
         </nav>        
     );
