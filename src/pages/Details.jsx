@@ -55,11 +55,26 @@ const Details = () => {
                     note : componente.note
             })
         }
-            
-    insertData(componente)
-        .then(() => setResponse('Successfully Inserted!'))
-        .catch(e => setResponse('Error: ' + e.response.data))
-        setShowModal(true);
+
+        const formData = new FormData();
+        formData.append('dropzone-file',image)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        async function insertIMG(){
+            return await axios.post("http://localhost:3001/Upload",formData,config)
+        }
+
+        insertIMG()
+        .then((response)=> console.log(response))
+        .catch((e)=> console.log(e))
+
+        // insertData(componente)
+        // .then(() => setResponse('Successfully Inserted!'))
+        // .catch(e => setResponse('Error: ' + e.response.data))
+        // setShowModal(true);
     }
 
     return (
@@ -122,7 +137,7 @@ const Details = () => {
                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" name="dropzone-file" value={image} onChange={(e)=>setImage(e.target.value)}/>
+                            <input id="dropzone-file" type="file" class="hidden" name="dropzone-file" value={image.value} onChange={(e)=>setImage(e.target.files[0])} onDrop={console.log('porcodio')}/>
                         </label>
                     </div>
                 </div>                
