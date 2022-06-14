@@ -55,6 +55,7 @@ const Details = () => {
                     note : componente.note
             })
         }
+            
     insertData(componente)
         .then(() => setResponse('Successfully Inserted!'))
         .catch(e => setResponse('Error: ' + e.response.data))
@@ -64,7 +65,7 @@ const Details = () => {
     return (
         <motion.div className="container" class="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
             <form onSubmit={insert} autocomplete="off">
-                <div class="grid grid-cols-4 gap-6">                    
+                <div class="grid grid-cols-4 gap-6">
                     <div class="relative z-0 w-full mb-6 group col-span-2">
                         <input type="text" name="codice" class="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)} required/>
                         <label for="codice">Codice</label>
@@ -121,10 +122,10 @@ const Details = () => {
                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" value={image}/>
+                            <input id="dropzone-file" type="file" class="hidden" name="dropzone-file" value={image} onChange={(e)=>setImage(e.target.value)}/>
                         </label>
                     </div>
-                </div>
+                </div>                
                 <div class="grid grid-cols-5 gap-6">
                     <div class="relative z-0 w-full mb-6 group">
                         <button type="submit" class="bottone">Aggiungi</button>

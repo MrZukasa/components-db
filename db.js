@@ -2,7 +2,20 @@ const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const mysql = require('mysql')
+const mysql = require('mysql');
+
+const multer = require('multer');
+const path = require('path');
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, './img/components');
+    },
+    filename: (req, file, callback) => {
+        console.log(file);
+        callback(null, Date.now() + path.extname(file.originalname));
+    },
+})
+const upload = multer({storage: storage});
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -12,6 +25,7 @@ const read = process.env.ENDPOINT_READ;
 const deleteURL = process.env.ENDPOINT_DELETE;
 const updateURL = process.env.ENDPOINT_UPDATE;
 const readID = process.env.ENDPOINT_READ_ID;
+const uploadIMG = process.env.ENDPOINT_UPLOAD;
 const port = process.env.PORT;
 const host = process.env.HOSTNAME;
 const user = process.env.USER;
@@ -40,7 +54,7 @@ app.post(insert,(req, res) => {
     const rivenditore2 = req.body.rivenditore2;
     const rivenditore3 = req.body.rivenditore3;
     const note = req.body.note;
-    
+
     const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
     db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
         if (err!==null){            
@@ -49,6 +63,10 @@ app.post(insert,(req, res) => {
             res.send(result);
         }        
     })
+})
+
+app.post(uploadIMG, upload.single('dropzone-file'), (req, res)=>{    
+    res.send('Image Upload');
 })
 
 app.get(read,(req, res)=>{

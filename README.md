@@ -64,4 +64,6 @@
 - Aggiungo switch [Dark/Light Mode](https://www.youtube.com/watch?v=2IfTD-muRF4&t=291s) 
   - setto la dark mode all'interno della Local Storage
 - Aggiungo la possibilità di inserire un immagine nel [database](https://www.tutsmake.com/upload-image-in-mysql-db-using-node-js-express-multer/) BLOB.
-  - Aggiungo una dropzone, ma probabilmente ci va un hook apposta perché [droppare](https://www.digitalocean.com/community/tutorials/react-react-dropzone) nella pagina non funziona
+  - Aggiungo [multer](https://www.youtube.com/watch?v=wIOpe8S2Mk8) per far si che il backend possa caricare il file multimediale. `npm install multer`
+  - Aggiungo una dropzone, ma probabilmente ci va un hook apposta perché [droppare](https://react-dropzone-uploader.js.org/docs/quick-start) nella pagina non funziona
+  - https://medium.com/@mahesh_joshi/reactjs-nodejs-upload-image-how-to-upload-image-using-reactjs-and-nodejs-multer-918dc66d304c
