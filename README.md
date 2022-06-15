@@ -46,6 +46,7 @@
   - rivenditore2
   - rivenditore3
   - note
+  - immagine
   
 ![Database](https://i.ibb.co/4RD3nmq/Cattura.png)
 

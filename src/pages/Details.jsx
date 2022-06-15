@@ -23,7 +23,7 @@ const Details = () => {
     const navigate = useHistory();
     const cloning = useLocation();
 
-    const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
+    const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note, image};
     
     useEffect(() => {
         if (cloning.state != undefined) {            
@@ -40,7 +40,7 @@ const Details = () => {
     },[cloning])
         
     const insert = (e) => {
-        e.preventDefault();                
+        e.preventDefault();
         async function insertData(componente){
             return await axios.post("http://localhost:3001/Insert",{
                     codice : componente.codice,
@@ -52,7 +52,8 @@ const Details = () => {
                     rivenditore1 : componente.rivenditore1,
                     rivenditore2 : componente.rivenditore2,
                     rivenditore3 : componente.rivenditore3,
-                    note : componente.note
+                    note : componente.note,
+                    image : componente.image
             })
         }
 
@@ -68,13 +69,13 @@ const Details = () => {
         }
 
         insertIMG()
-        .then((response)=> console.log(response))
-        .catch((e)=> console.log(e))
+        .then(() => setResponse('Successfully Inserted!'))
+        .catch(e => setResponse('Error: ' + e.response.data))
 
-        // insertData(componente)
-        // .then(() => setResponse('Successfully Inserted!'))
-        // .catch(e => setResponse('Error: ' + e.response.data))
-        // setShowModal(true);
+        insertData(componente)
+        .then(() => setResponse('Successfully Inserted!'))
+        .catch(e => setResponse('Error: ' + e.response.data))
+        setShowModal(true);
     }
 
     return (
@@ -127,7 +128,7 @@ const Details = () => {
                 </div>
                 <div class="grid grid-cols-5 gap-6">
                     <div class="relative z-0 w-full mb-6 group col-span-3">
-                        <input type="text" name="note" class="peer" placeholder=" " value={note} onChange={(e)=>setNote(e.target.value)}/>
+                        <textarea rows="7" type="text" name="note" class="peer" placeholder=" " value={note} onChange={(e)=>setNote(e.target.value)}/>
                         <label for="note">Note</label>
                     </div>
                     <div class="relative z-0 w-full mb-6 group col-span-2">
@@ -137,12 +138,14 @@ const Details = () => {
                                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="flex w-full h-full opacity-0 cursor-pointer" name="dropzone-file" value={image.value} onChange={(e)=>setImage(e.target.files[0])}/>
-                        </label>                        
-                        <input type="text" value={document.getElementById('dropzone-file').value}></input>
+                            <input id="dropzone-file" type="file" class="flex w-full h-full opacity-0 cursor-pointer" accept="image/*" name="dropzone-file" onChange={(e)=>setImage(e.target.files[0])}/>
+                        </label>
+                        <div class="flex justify-center mt-44">
+                            <input type="text" class="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={image.name}/>
+                        </div>
                     </div>
                 </div>                
-                <div class="grid grid-cols-5 gap-6">
+                <div class="grid grid-cols-1 gap-6">
                     <div class="relative z-0 w-full mb-6 group">
                         <button type="submit" class="bottone">Aggiungi</button>
                     </div>                    
@@ -157,5 +160,5 @@ const Details = () => {
         </motion.div>
     );
 }
- 
+
 export default Details;

@@ -11,8 +11,7 @@ const storage = multer.diskStorage({
         callback(null, './img/components');
     },
     filename: (req, file, callback) => {
-        console.log(file);
-        callback(null, Date.now() + path.extname(file.originalname));
+        callback(null, file.originalname);
     },
 })
 const upload = multer({storage: storage});
@@ -54,14 +53,16 @@ app.post(insert,(req, res) => {
     const rivenditore2 = req.body.rivenditore2;
     const rivenditore3 = req.body.rivenditore3;
     const note = req.body.note;
+    const image = req.body.image;
 
-    const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
-    db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
+    const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note, immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
+    db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note, image], (err, result) => {
         if (err!==null){            
             res.status(400).send(err.message);
-        } else {            
+            console.log(sql);
+        } else {
             res.send(result);
-        }        
+        }
     })
 })
 
@@ -110,7 +111,7 @@ app.patch(updateURL,(req, res)=>{
     db.query(sql, [codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
         if (err!==null){
             res.status(400).send(err.message);
-        } else {            
+        } else {
             res.send(result);
         }
     })
