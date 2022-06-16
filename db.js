@@ -63,24 +63,23 @@ app.post(insert,(req, res) => {
         } else {
             res.send(result);
         }
-    })
+    })    
 })
 
 app.post(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
-    // const image = 'http://localhost:3000/img/components/'+  req.file.filename;
+    const ID = req.params.ID;
+    console.log(ID);
     const image = req.file.buffer;
-    console.log(image);
-    const sql = 'INSERT INTO ' + process.env.TABLE +' (codice, descrizione, quantita, immagine) VALUES (?, ?, ?, ?);';
-    db.query(sql,[6,6,6,image], (err,result)=>{
+    const sql = 'UPDATE ' + process.env.TABLE +' SET immagine = ? WHERE ' + process.env.TABLE +' . ID = ' + ID + ';';
+    db.query(sql,[image], (err,result)=>{
         if (err!==null){
             res.status(400).send(err.message);
-            console.log(sql);
         } else {
-            console.log(sql);
             res.send(result);
         }
     })
 })
+
 
 app.get(read,(req, res)=>{
     const sql = 'SELECT * FROM '+ process.env.TABLE +';';

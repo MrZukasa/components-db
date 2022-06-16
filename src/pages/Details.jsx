@@ -65,18 +65,17 @@ const Details = () => {
             }
         };
         async function insertIMG(){
-            return await axios.post("http://localhost:3001/Upload",formData,config)            
+            return await axios.post("http://localhost:3001/Upload/" + codice,formData,config)            
         }
 
         insertIMG()
         .then(() => setResponse('Successfully Inserted!'))
-        .catch(e => setResponse('Error Image: ' + e.response.data))
-        setShowModal(true);
+        .catch(e => setResponse('Error Image: ' + e.response.data))        
 
-        // insertData(componente)
-        // .then(() => setResponse('Successfully Inserted!'))
-        // .catch(e => setResponse('Error: ' + e.response.data))
-        // setShowModal(true);
+        insertData(componente)
+        .then(() => setResponse('Successfully Inserted!'))
+        .catch(e => setResponse('Error: ' + e.response.data))
+        setShowModal(true);
     }
 
     return (
