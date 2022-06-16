@@ -65,17 +65,18 @@ const Details = () => {
             }
         };
         async function insertIMG(){
-            return await axios.post("http://localhost:3001/Upload",formData,config)
+            return await axios.post("http://localhost:3001/Upload",formData,config)            
         }
 
         insertIMG()
         .then(() => setResponse('Successfully Inserted!'))
-        .catch(e => setResponse('Error: ' + e.response.data))
-
-        insertData(componente)
-        .then(() => setResponse('Successfully Inserted!'))
-        .catch(e => setResponse('Error: ' + e.response.data))
+        .catch(e => setResponse('Error Image: ' + e.response.data))
         setShowModal(true);
+
+        // insertData(componente)
+        // .then(() => setResponse('Successfully Inserted!'))
+        // .catch(e => setResponse('Error: ' + e.response.data))
+        // setShowModal(true);
     }
 
     return (
@@ -141,7 +142,7 @@ const Details = () => {
                             <input id="dropzone-file" type="file" class="flex w-full h-full opacity-0 cursor-pointer" accept="image/*" name="dropzone-file" onChange={(e)=>setImage(e.target.files[0])}/>
                         </label>
                         <div class="flex justify-center mt-44">
-                            <input type="text" class="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={image.name}/>
+                            <input type="text" class="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={(image!=undefined) ? image.name :''}/>
                         </div>
                     </div>
                 </div>                

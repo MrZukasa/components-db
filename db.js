@@ -5,8 +5,9 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const multer = require('multer');
-const path = require('path');
-const storage = multer.diskStorage({
+// const path = require('path');
+// const storage = multer.diskStorage({
+const storage = multer.memoryStorage({
     destination: (req, file, callback) => {
         callback(null, './img/components');
     },
@@ -53,10 +54,9 @@ app.post(insert,(req, res) => {
     const rivenditore2 = req.body.rivenditore2;
     const rivenditore3 = req.body.rivenditore3;
     const note = req.body.note;
-    const image = req.body.image;
 
-    const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note, immagine) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
-    db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note, image], (err, result) => {
+    const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
+    db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
         if (err!==null){            
             res.status(400).send(err.message);
             console.log(sql);
@@ -66,8 +66,20 @@ app.post(insert,(req, res) => {
     })
 })
 
-app.post(uploadIMG, upload.single('dropzone-file'), (req, res)=>{    
-    res.send('Image Upload');
+app.post(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
+    // const image = 'http://localhost:3000/img/components/'+  req.file.filename;
+    const image = req.file.buffer;
+    console.log(image);
+    const sql = 'INSERT INTO ' + process.env.TABLE +' (codice, descrizione, quantita, immagine) VALUES (?, ?, ?, ?);';
+    db.query(sql,[6,6,6,image], (err,result)=>{
+        if (err!==null){
+            res.status(400).send(err.message);
+            console.log(sql);
+        } else {
+            console.log(sql);
+            res.send(result);
+        }
+    })
 })
 
 app.get(read,(req, res)=>{
