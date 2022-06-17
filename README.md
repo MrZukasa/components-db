@@ -70,3 +70,5 @@
   - Formatto i dati ricevuti dal frontend in modo da poter leggere sul backend il file blob e metterlo nel DB, volendo si può mettere solo l'url ma per provare ho fatto cosi
   - setto la query in update in modo da aggiungere l'immagine al codice appena creato, questo forse comporterà dei problemi in Update
   - dovrei rileggere il nome del file e vedere se viene cambiato o no per rimettere lo stesso file caso in cui non sia cambiato
+  - Aggiungo `npm install buffer` per leggere il blob come buffer dal database e inserirlo come immagine nella mia pagina
+  - Aggiungo `npm install @mui/material @emotion/react @emotion/styled` per usare un tooltip che mi permetta di vedere la foto durante la selezione

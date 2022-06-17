@@ -8,12 +8,12 @@ const multer = require('multer');
 // const path = require('path');
 // const storage = multer.diskStorage({
 const storage = multer.memoryStorage({
-    destination: (req, file, callback) => {
-        callback(null, './img/components');
-    },
-    filename: (req, file, callback) => {
-        callback(null, file.originalname);
-    },
+    // destination: (req, file, callback) => {
+    //     callback(null, './img/components');
+    // },
+    // filename: (req, file, callback) => {
+    //     callback(null, file.originalname);
+    // },
 })
 const upload = multer({storage: storage});
 

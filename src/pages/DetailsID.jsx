@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import axios from "axios";
 import Transition from "../Transition";
 import { motion } from 'framer-motion';
+import { Buffer } from "buffer";
 
 const DetailsID = () => {
 
@@ -20,6 +21,8 @@ const DetailsID = () => {
     const navigate = useHistory();
     const [response,setResponse] = useState('');
     const [showModal, setShowModal] = useState(false);
+    const [immagine, setImmagine] = useState('');
+    const [type, setType] = useState('image/png');
     const {ID} = useParams();
     const clearID = ID.split(':');
     const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
@@ -41,7 +44,8 @@ const DetailsID = () => {
                     setRivenditore1(resultant.rivenditore1)
                     setRivenditore2(resultant.rivenditore2)
                     setRivenditore3(resultant.rivenditore3)
-                    setNote(resultant.note)
+                    setNote(resultant.note)                    
+                    setImmagine(Buffer.from(resultant.immagine).toString('base64'))
                 })
             } else {
                 navigate.push('/NotFound');
@@ -150,7 +154,7 @@ const DetailsID = () => {
                     </div>
                 </div>
                 <button type="button" class="bottone" onClick={Edit}>Applica Modifiche</button>
-                <button type="button" class="bottone ml-2" onClick={Remove}>Elimina</button>
+                <button type="button" class="bottone ml-2" onClick={Remove}>Elimina</button>                
                 <Modal showModal={showModal} onClose={()=> {
                     setShowModal(false);
                     if (!response.includes("Error")){
@@ -158,6 +162,8 @@ const DetailsID = () => {
                     }
                     }} response={response} />
                 <button type="button" class="bottone ml-2" onClick={Copy}>Copia Componente</button>
+                
+                {/* <img src={`data:image/png;base64,${immagine}`} /> */}
             </form>
         </motion.div>
     );

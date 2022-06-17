@@ -67,13 +67,13 @@ const Details = () => {
             return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config)
         }
 
-        insertIMG()
-        .then(() => setResponse('Successfully Inserted!'))
-        .catch(e => setResponse('Error Image: ' + e.response.data))
-        
-
         insertData(componente)
-        .then(() => setResponse('Successfully Inserted!'))
+        .then(() => {            
+            setResponse('Successfully Inserted!');
+            insertIMG()
+            .then(() => setResponse('Successfully Inserted, also with image!'))
+            .catch(e => setResponse('Error Image: ' + e.response.data))
+        })
         .catch(e => setResponse('Error: ' + e.response.data))
         setShowModal(true);
     }
