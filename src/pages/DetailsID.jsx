@@ -4,7 +4,6 @@ import Modal from "../Modal";
 import axios from "axios";
 import Transition from "../Transition";
 import { motion } from 'framer-motion';
-import Details from "./Details";
 
 const DetailsID = () => {
 

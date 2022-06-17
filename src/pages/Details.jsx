@@ -52,11 +52,10 @@ const Details = () => {
                     rivenditore1 : componente.rivenditore1,
                     rivenditore2 : componente.rivenditore2,
                     rivenditore3 : componente.rivenditore3,
-                    note : componente.note,
-                    image : componente.image
-            })
+                    note : componente.note
+            })            
         }
-
+        
         const formData = new FormData();
         formData.append('dropzone-file',image)
         const config = {
@@ -65,12 +64,13 @@ const Details = () => {
             }
         };
         async function insertIMG(){
-            return await axios.post("http://localhost:3001/Upload/" + codice,formData,config)            
+            return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config)
         }
 
         insertIMG()
         .then(() => setResponse('Successfully Inserted!'))
-        .catch(e => setResponse('Error Image: ' + e.response.data))        
+        .catch(e => setResponse('Error Image: ' + e.response.data))
+        
 
         insertData(componente)
         .then(() => setResponse('Successfully Inserted!'))

@@ -66,7 +66,7 @@
   - setto la dark mode all'interno della Local Storage
 - Aggiungo la possibilità di inserire un immagine nel [database](https://www.tutsmake.com/upload-image-in-mysql-db-using-node-js-express-multer/) BLOB.
   - Aggiungo [multer](https://www.youtube.com/watch?v=wIOpe8S2Mk8) per far si che il backend possa caricare il file multimediale. `npm install multer`
-  - Aggiungo una dropzone, daei template di tailwind e la sistemo per avere il focus sulla input box in modo da poter droppare
+  - Aggiungo una dropzone, dai template di tailwind e la sistemo per avere il focus sulla input box in modo da poter droppare
   - Formatto i dati ricevuti dal frontend in modo da poter leggere sul backend il file blob e metterlo nel DB, volendo si può mettere solo l'url ma per provare ho fatto cosi
   - setto la query in update in modo da aggiungere l'immagine al codice appena creato, questo forse comporterà dei problemi in Update
   - dovrei rileggere il nome del file e vedere se viene cambiato o no per rimettere lo stesso file caso in cui non sia cambiato

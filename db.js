@@ -53,26 +53,24 @@ app.post(insert,(req, res) => {
     const rivenditore1 = req.body.rivenditore1;
     const rivenditore2 = req.body.rivenditore2;
     const rivenditore3 = req.body.rivenditore3;
-    const note = req.body.note;
+    const note = req.body.note;    
 
     const sql = 'INSERT INTO '+ process.env.TABLE +' (codice, cod_costruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);';
     db.query(sql,[codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note], (err, result) => {
         if (err!==null){            
             res.status(400).send(err.message);
-            console.log(sql);
         } else {
             res.send(result);
         }
     })    
 })
 
-app.post(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
-    const ID = req.params.ID;
-    console.log(ID);
+app.patch(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
+    const codice = req.params.codice;
     const image = req.file.buffer;
-    const sql = 'UPDATE ' + process.env.TABLE +' SET immagine = ? WHERE ' + process.env.TABLE +' . ID = ' + ID + ';';
+    const sql = 'UPDATE ' + process.env.TABLE +' SET immagine = (?) WHERE codice = "' + codice + '";';
     db.query(sql,[image], (err,result)=>{
-        if (err!==null){
+        if (err!==null){            
             res.status(400).send(err.message);
         } else {
             res.send(result);
