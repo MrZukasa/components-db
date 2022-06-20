@@ -72,3 +72,4 @@
   - dovrei rileggere il nome del file e vedere se viene cambiato o no per rimettere lo stesso file caso in cui non sia cambiato
   - Aggiungo `npm install buffer` per leggere il blob come buffer dal database e inserirlo come immagine nella mia pagina
   - Aggiungo `npm install @mui/material @emotion/react @emotion/styled` per usare un tooltip che mi permetta di vedere la foto durante la selezione
+- Ricerca con campi specifici

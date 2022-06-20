@@ -23,7 +23,7 @@ const Details = () => {
     const navigate = useHistory();
     const cloning = useLocation();
 
-    const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note, image};
+    const componente = {codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3, note};
     
     useEffect(() => {
         if (cloning.state != undefined) {            
@@ -35,7 +35,7 @@ const Details = () => {
             setRivenditore1(cloning.state.rivenditore1);
             setRivenditore2(cloning.state.rivenditore2);
             setRivenditore3(cloning.state.rivenditore3);
-            setNote(cloning.state.note);
+            setNote(cloning.state.note);            
         }
     },[cloning])
         
@@ -68,7 +68,7 @@ const Details = () => {
         }
 
         insertData(componente)
-        .then(() => {            
+        .then(() => {
             setResponse('Successfully Inserted!');
             insertIMG()
             .then(() => setResponse('Successfully Inserted, also with image!'))
@@ -141,7 +141,7 @@ const Details = () => {
                             <input id="dropzone-file" type="file" class="flex w-full h-full opacity-0 cursor-pointer" accept="image/*" name="dropzone-file" onChange={(e)=>setImage(e.target.files[0])}/>
                         </label>
                         <div class="flex justify-center mt-44">
-                            <input type="text" class="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={(image!=undefined) ? image.name :''}/>
+                            <input type="text" class="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={(image!="") ? image.name:'No image selected'}/>
                         </div>
                     </div>
                 </div>                
