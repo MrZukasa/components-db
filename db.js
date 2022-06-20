@@ -67,7 +67,7 @@ app.post(insert,(req, res) => {
 
 app.patch(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
     const codice = req.params.codice;
-    const image = req.file.buffer;
+    const image = req.file.buffer;    
     const sql = 'UPDATE ' + process.env.TABLE +' SET immagine = (?) WHERE codice = "' + codice + '";';
     db.query(sql,[image], (err,result)=>{
         if (err!==null){            
@@ -80,22 +80,26 @@ app.patch(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
 
 
 app.get(read,(req, res)=>{
-    const codice = req.query.codice;
-    const codiceCostruttore = req.query.codiceCostruttore;
-    const descrizione = req.query.descrizione;
-    const costruttore = req.query.costruttore;
-    const quantita = req.query.quantita;
-    const posizione = req.query.posizione;
-    const rivenditore1 = req.query.rivenditore1;
-    const rivenditore2 = req.query.rivenditore2;
-    const rivenditore3 = req.query.rivenditore3;
+    const codice = '%'.concat(req.query.codice.concat('%'));
+    const codiceCostruttore = '%'.concat(req.query.codiceCostruttore.concat('%'));
+    const descrizione = '%'.concat(req.query.descrizione.concat('%'));
+    const costruttore = '%'.concat(req.query.costruttore.concat('%'));
+    const quantita = '%'.concat(req.query.quantita.concat('%'));
+    const posizione = '%'.concat(req.query.posizione.concat('%'));
+    const rivenditore1 = '%'.concat(req.query.rivenditore1.concat('%'));
+    const rivenditore2 = '%'.concat(req.query.rivenditore2.concat('%'));
+    const rivenditore3 = '%'.concat(req.query.rivenditore3.concat('%'));
 
-    const sql = 'SELECT * FROM '+ process.env.TABLE +` WHERE codice = (?) OR cod_costruttore = (?) OR descrizione = (?) OR costruttore = (?) OR quantita = (?) OR posizione = (?) OR rivenditore1 = (?) OR rivenditore2 = (?) OR rivenditore3 = (?);`
+    const sql = 'SELECT * FROM '+ process.env.TABLE +` WHERE codice LIKE (?) OR cod_costruttore LIKE (?) OR descrizione LIKE (?) OR costruttore LIKE (?) OR quantita LIKE (?) OR posizione LIKE (?) OR rivenditore1 LIKE (?) OR rivenditore2 LIKE (?) OR rivenditore3 LIKE (?);`
     db.query(sql, [codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3], (err, result) => {
         if (err!==null){                        
             res.status(400).send(err.message);
+            console.log(sql)
+            console.log(posizione)
         } else {            
             res.send(result);
+            console.log(sql)
+            console.log(posizione)
         }        
     })
 })

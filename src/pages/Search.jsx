@@ -93,12 +93,12 @@ const Search = () => {
     
     return (      
         <motion.div className="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
-          <div id="show" className="flex justify-end hidden">
+          <div id="show" className="flex justify-end hidden mt-2">
             <button type="button" class="bottone" onClick={hide}>
               <svg class="w-6 h-6 dark:fill-white fill-gray-900" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
             </button>
           </div>
-          <form onSubmit={readData} autocomplete="off" id="searchForm">
+          <form onSubmit={readData} autocomplete="off" id="searchForm" className="mt-3">
                 <div class="grid grid-cols-4 gap-6">
                     <div class="relative z-0 w-full mb-6 group col-span-2">
                         <input type="text" name="codice" class="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)}/>

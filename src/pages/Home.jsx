@@ -6,9 +6,10 @@ const Home = () => {
 
     const divStyle = {
         width: '100%',
-        height: '100%',
+        height: '78vh',
         backgroundImage: `url('/img/background.jpg')`,
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       };
 
     return (

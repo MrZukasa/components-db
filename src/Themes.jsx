@@ -7,7 +7,7 @@ const changeTheme = () => {
     localStorage.setItem('Tema',theme);
 
     useEffect(() =>{        
-        const root = document.getElementById('root');        
+        const root = document.getElementById('root');
         root.classList.remove(colorTheme);
         root.classList.add(theme);        
     },[theme])
