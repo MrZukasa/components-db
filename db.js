@@ -80,9 +80,19 @@ app.patch(uploadIMG, upload.single('dropzone-file'), (req, res)=>{
 
 
 app.get(read,(req, res)=>{
-    const sql = 'SELECT * FROM '+ process.env.TABLE +';';
-    db.query(sql, (err, result) => {
-        if (err!==null){            
+    const codice = req.query.codice;
+    const codiceCostruttore = req.query.codiceCostruttore;
+    const descrizione = req.query.descrizione;
+    const costruttore = req.query.costruttore;
+    const quantita = req.query.quantita;
+    const posizione = req.query.posizione;
+    const rivenditore1 = req.query.rivenditore1;
+    const rivenditore2 = req.query.rivenditore2;
+    const rivenditore3 = req.query.rivenditore3;
+
+    const sql = 'SELECT * FROM '+ process.env.TABLE +` WHERE codice = (?) OR cod_costruttore = (?) OR descrizione = (?) OR costruttore = (?) OR quantita = (?) OR posizione = (?) OR rivenditore1 = (?) OR rivenditore2 = (?) OR rivenditore3 = (?);`
+    db.query(sql, [codice, codiceCostruttore, descrizione, costruttore, quantita, posizione, rivenditore1, rivenditore2, rivenditore3], (err, result) => {
+        if (err!==null){                        
             res.status(400).send(err.message);
         } else {            
             res.send(result);
