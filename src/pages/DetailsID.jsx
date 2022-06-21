@@ -47,7 +47,7 @@ const DetailsID = () => {
                     setRivenditore2(resultant.rivenditore2)
                     setRivenditore3(resultant.rivenditore3)
                     setNote(resultant.note)                    
-                    setImmagine(Buffer.from(resultant.immagine).toString('base64'))
+                    setImmagine(Buffer.from(resultant.immagine).toString('base64'))                    
                 })
             } else {
                 navigate.push('/NotFound');
@@ -190,13 +190,16 @@ const DetailsID = () => {
                             <input id="dropzone-file" type="file" class="flex w-full h-full opacity-0 cursor-pointer" accept="image/*" name="dropzone-file" onChange={(e)=>setImage(e.target.files[0])}/>
                         </label>
                         <div class="flex justify-center mt-44">
+                            {(immagine) ?
                             <HtmlTooltip title={
                                 <React.Fragment>
                                     <img src={`data:image/png;base64,${immagine}`}/>
                                 </React.Fragment>
-                            }>
-                                <input type="text" className="border-0 !text-violet-400 text-sm text-center" disabled value={(image!="") ? image.name:'Stored Image Preview'}/>
+                                }>
+                                <input type="text" id='labelimage' className="border-0 !text-violet-400 text-sm text-center" disabled value={(image!="") ? image.name:'Stored Image Preview'}/>
                             </HtmlTooltip>
+                            : <input type="text" id='labelimage' className="border-0 !text-violet-400 text-sm text-center" disabled value='No Image available'/>
+                            }
                         </div>
                     </div>
                 </div> 
