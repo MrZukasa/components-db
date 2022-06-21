@@ -18,9 +18,9 @@ const Footer = () => {
                 <div class="mr-8">
                     <motion.button onClick={()=>{setColorTheme(colorTheme)}} initial={{ y: -20, opacity: 0 }}
                     key={colorTheme}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 20, opacity: 0 }}
-                transition={{ duration: 0.2 }}>
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 20, opacity: 0 }}
+                    transition={{ duration: 0.2 }}>
                         {colorTheme == 'light'?<div class="text-2xl hover:scale-125 transition ease-in-out">🌤️</div>: <div class="text-2xl hover:scale-125 transition ease-in-out">🌙</div>}
                     </motion.button>                    
                 </div>

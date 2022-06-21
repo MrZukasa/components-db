@@ -9,10 +9,10 @@ const Home = () => {
         height: '78vh',
         backgroundImage: `url('/img/background.jpg')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center',        
       };
 
-    return (
+    return (        
         <motion.div style={divStyle} initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
             <div className="card">
                 <Link to="/Details" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-4xl hover:bg-gray-100 hover:scale-105 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-slate-700 transition ease-in-out mb-3">
@@ -30,7 +30,7 @@ const Home = () => {
                 <p className="quote">'Mama always said life was like a box of chocolates. You never know what you're gonna get.'</p>
                 <p className="signature">Forrest Gump</p>
             </div>            
-        </motion.div>
+        </motion.div>        
     );
 }
 export default Home;
