@@ -4,6 +4,8 @@ import Modal from "../Modal";
 import axios from "axios";
 import Transition from "../Transition";
 import { motion } from 'framer-motion';
+import Tooltip from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom';
 
 const Details = () => {
 
@@ -81,79 +83,81 @@ const Details = () => {
     }
 
     return (
-        <motion.div className="container" class="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
-            <form onSubmit={insert} autocomplete="off">
-                <div class="grid grid-cols-4 gap-6">
-                    <div class="relative z-0 w-full mb-6 group col-span-2">
-                        <input type="text" name="codice" class="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)} required/>
-                        <label for="codice">Codice</label>
+        <motion.div className="container content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
+            <form onSubmit={insert} autoComplete="off">
+                <div className="grid grid-cols-4 gap-6">
+                    <div className="relative z-0 w-full mb-6 group col-span-2">
+                        <input type="text" name="codice" className="peer" placeholder=" " value={codice} onChange={(e)=>setCodice(e.target.value)} required/>
+                        <label htmlFor="codice">Codice</label>
                     </div>
-                    <div class="relative z-0 w-full mb-6 group col-span-2">
-                        <input type="text" name="codiceCostruttore" class="peer" placeholder=" " value={codiceCostruttore} onChange={(e)=>setCodiceCostruttre(e.target.value)}/>
-                        <label for="codiceCostruttore">Codice Costruttore</label>
+                    <div className="relative z-0 w-full mb-6 group col-span-2">
+                        <input type="text" name="codiceCostruttore" className="peer" placeholder=" " value={codiceCostruttore} onChange={(e)=>setCodiceCostruttre(e.target.value)}/>
+                        <label htmlFor="codiceCostruttore">Codice Costruttore</label>
                     </div>
                 </div>
-                <div class="relative z-0 w-full mb-6 group">
-                    <input type="text" name="descrizione" class="peer" placeholder=" " value={descrizione} onChange={(e)=>setDescrizione(e.target.value)} required/>
-                    <label for="descrizione">Descrizione</label>
+                <div className="relative z-0 w-full mb-6 group">
+                    <input type="text" name="descrizione" className="peer" placeholder=" " value={descrizione} onChange={(e)=>setDescrizione(e.target.value)} required/>
+                    <label htmlFor="descrizione">Descrizione</label>
                 </div>
-                <div class="grid grid-cols-5 gap-6">
-                    <div class="relative z-0 w-full mb-6 group col-span-3">
-                        <input type="text" name="costruttore" class="peer" placeholder=" " value={costruttore} onChange={(e)=>setCostruttore(e.target.value)}/>
-                        <label for="costruttore">Costruttore</label>
+                <div className="grid grid-cols-5 gap-6">
+                    <div className="relative z-0 w-full mb-6 group col-span-3">
+                        <input type="text" name="costruttore" className="peer" placeholder=" " value={costruttore} onChange={(e)=>setCostruttore(e.target.value)}/>
+                        <label htmlFor="costruttore">Costruttore</label>
                     </div>
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="quantita" class="peer" required placeholder=" " value={quantita} onChange={(e)=>{
+                    <div className="relative z-0 w-full mb-6 group">
+                        <input type="text" name="quantita" className="peer" required placeholder=" " value={quantita} onChange={(e)=>{
                             if ((!isNaN(e.target.value) && (e.target.value != " "))){
                                 setQuantita(e.target.value)
                             }}}/>
-                        <label for="quantita">Quantità</label>
+                        <label htmlFor="quantita">Quantità</label>
                     </div>
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="posizione" class="peer" placeholder=" " value={posizione} onChange={(e)=>setPosizione(e.target.value)}/>
-                        <label for="posizione">Posizione</label>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="rivenditore1" class="peer" placeholder=" " value={rivenditore1} onChange={(e)=>setRivenditore1(e.target.value)}/>
-                        <label for="rivenditore1">Primo rivenditore</label>
-                    </div>
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="rivenditore2" class="peer" placeholder=" " value={rivenditore2} onChange={(e)=>setRivenditore2(e.target.value)}/>
-                        <label for="rivenditore2">Secondo rivenditore</label>
-                    </div>
-                    <div class="relative z-0 w-full mb-6 group">
-                        <input type="text" name="rivenditore3" class="peer" placeholder=" " value={rivenditore3} onChange={(e)=>setRivenditore3(e.target.value)}/>
-                        <label for="rivenditore3">Terzo rivenditore</label>
+                    <div className="relative z-0 w-full mb-6 group">
+                        <input type="text" name="posizione" className="peer" placeholder=" " value={posizione} onChange={(e)=>setPosizione(e.target.value)}/>
+                        <label htmlFor="posizione">Posizione</label>
                     </div>
                 </div>
-                <div class="grid grid-cols-5 gap-6">
-                    <div class="relative z-0 w-full mb-6 group col-span-3">
-                        <textarea rows="7" type="text" name="note" class="peer" placeholder=" " value={note} onChange={(e)=>setNote(e.target.value)}/>
-                        <label for="note">Note</label>
+                <div className="grid grid-cols-3 gap-6">
+                    <div className="relative z-0 w-full mb-6 group">
+                        <input type="text" name="rivenditore1" className="peer" placeholder=" " value={rivenditore1} onChange={(e)=>setRivenditore1(e.target.value)}/>
+                        <label htmlFor="rivenditore1">Primo rivenditore</label>
                     </div>
-                    <div class="relative z-0 w-full mb-6 group col-span-2">
-                        <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-52 bg-gray-200 rounded-lg border-2 border-gray-400 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-slate-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-violet-400 hover:border-violet-500 dark:hover:bg-slate-700 ml-20">
-                            <div class="flex flex-col justify-center items-center pt-5 pb-6 absolute">
-                                <svg class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">All image file (MAX. 64Kib)</p>
+                    <div className="relative z-0 w-full mb-6 group">
+                        <input type="text" name="rivenditore2" className="peer" placeholder=" " value={rivenditore2} onChange={(e)=>setRivenditore2(e.target.value)}/>
+                        <label htmlFor="rivenditore2">Secondo rivenditore</label>
+                    </div>
+                    <div className="relative z-0 w-full mb-6 group">
+                        <input type="text" name="rivenditore3" className="peer" placeholder=" " value={rivenditore3} onChange={(e)=>setRivenditore3(e.target.value)}/>
+                        <label htmlFor="rivenditore3">Terzo rivenditore</label>
+                    </div>
+                </div>
+                <div className="grid grid-cols-5 gap-6">
+                    <div className="relative z-0 w-full mb-6 group col-span-3">
+                        <textarea rows="7" type="text" name="note" className="peer" placeholder=" " value={note} onChange={(e)=>setNote(e.target.value)}/>
+                        <label htmlFor="note">Note</label>
+                    </div>
+                    <div className="relative z-0 w-full mb-6 group col-span-2">
+                        <label htmlFor="dropzone-file" className="flex flex-col justify-center items-center w-full h-52 bg-gray-200 rounded-lg border-2 border-gray-400 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-slate-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-violet-400 hover:border-violet-500 dark:hover:bg-slate-700 ml-20">
+                            <div className="flex flex-col justify-center items-center pt-5 pb-6 absolute">
+                                <svg className="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">All image file (MAX. 64Kib)</p>
                             </div>
-                            <input id="dropzone-file" type="file" class="flex w-full h-full opacity-0 cursor-pointer" accept="image/*" name="dropzone-file" onChange={(e)=>setImage(e.target.files[0])}/>
+                            <input id="dropzone-file" type="file" className="flex w-full h-full opacity-0 cursor-pointer" accept="image/*" name="dropzone-file" onChange={(e)=>setImage(e.target.files[0])}/>
                         </label>
-                        <div class="flex justify-center mt-44">
-                            <input type="text" class="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={(image!=null) ? image.name:'No image selected'}/>
+                        <div className="flex justify-center mt-44">
+                            <input type="text" className="w-80 border-0 !text-violet-400 text-sm text-center" disabled value={(image!=null) ? image.name:'No image selected'}/>
                         </div>
                     </div>
                 </div>                
-                <div class="grid grid-cols-1 gap-6">
-                    <div class="relative z-0 w-full mb-6 group">
-                        <button type="submit" class="bottone">
-                            <svg class="w-6 h-6 dark:fill-white fill-gray-900" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
+                <div className="grid grid-cols-1 gap-6">
+                    <div className="relative z-0 w-full mb-6 group">
+                        <Tooltip title="Add" TransitionComponent={Zoom}>
+                            <button type="submit" className="bottone">
+                                <svg className="w-6 h-6 dark:fill-white fill-gray-900" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </Tooltip>
                     </div>                    
                 </div>                
                 <Modal showModal={showModal} onClose={()=> {
@@ -161,7 +165,7 @@ const Details = () => {
                     if (response.includes('Succ')==true) {
                         navigate.push('/Search');
                     }
-                    }} response={response} />
+                    }} response={response}/>
             </form>            
         </motion.div>
     );

@@ -58,11 +58,11 @@ const Modal = (modale) => {
                       <div className="relative p-3 flex-auto">                      
                         <p className="my-4 text-red-500 font-semibold text-center pr-10 pl-10">
                           {modale.response}
-                        </p>                      
+                        </p>
                       </div>
                       {/*footer*/}
                       <div className="flex items-center justify-end p-4 border-t border-solid dark:bg-slate-700 bg-gray-300 border-slate-700 dark:border-slate-300 rounded-b">
-                        <button className="bottone" type="button" onClick={modale.onClose}>
+                        <button className="bottone" type="button" onClick={modale.onClose} autoFocus>
                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                           </svg>
