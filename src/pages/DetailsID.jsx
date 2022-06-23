@@ -102,12 +102,10 @@ const DetailsID = () => {
                 .catch(e => setResponse('Error: ' + e.response.data))
             })
             .catch(e => setResponse('Error: ' + e.response.data))
-            setShowModal(true);
-            console.log(componente)
+            setShowModal(true);            
         } else {
             setResponse('Error: Codice, Descrizione e Quantità sono sempre richiesti');
-            setShowModal(true);
-            console.log(componente)
+            setShowModal(true);            
         }
     }
 
@@ -128,7 +126,7 @@ const DetailsID = () => {
       }));
     
     return (
-        <motion.div className="container" className="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
+        <motion.div className="container content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>
             <form autoComplete="off">
                 <div className="grid grid-cols-4 gap-6">
                     <div className="relative z-0 w-full mb-6 group col-span-2">

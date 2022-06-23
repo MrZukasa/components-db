@@ -65,10 +65,8 @@ const Details = () => {
                 'content-type': 'multipart/form-data'
             }
         };
-        async function insertIMG(){
-            console.log(image);
+        async function insertIMG(){            
             return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config);
-            
         }
 
         insertData(componente)
