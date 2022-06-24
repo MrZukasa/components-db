@@ -30,7 +30,7 @@
 
 .card {
   font-family: 'Dosis', sans-serif;
-  @apply text-base flex mt-10 ml-10 opacity-80
+  @apply text-base flex opacity-80
 }
 
 .end {
@@ -56,3 +56,16 @@ label {
   @apply text-white bg-violet-500 dark:hover:bg-violet-700 hover:bg-indigo-400 focus:ring-1 focus:outline-none dark:focus:ring-violet-300 font-medium 
   rounded-lg text-base w-full sm:w-auto px-5 py-2.5 text-center focus:ring-violet-700 transition ease-in-out
 }
+
+.fade-anim img {
+  animation: fadeAnim 1s ease-out;
+}
+
+@keyframes fadeAnim {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

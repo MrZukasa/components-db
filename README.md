@@ -74,3 +74,4 @@
   - Aggiungo `npm install @mui/material @emotion/react @emotion/styled` per usare un tooltip che mi permetta di vedere la foto durante la selezione
 - Ricerca con campi specifici
   - quando si passano dei parametri con axios, da nodejs si leggono come [req.query](https://www.youtube.com/watch?v=zrVjqvavS5U)
+- Carousel in [Tailwind](https://www.youtube.com/watch?v=ho93e0IhdTA)

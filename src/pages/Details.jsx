@@ -81,7 +81,7 @@ const Details = () => {
     }
 
     return (
-        <motion.div className="container content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
+        <motion.div className="content" initial={Transition.initial} animate={Transition.animate} exit={Transition.exit} transition={Transition.transitionEffect}>            
             <form onSubmit={insert} autoComplete="off">
                 <div className="grid grid-cols-4 gap-6">
                     <div className="relative z-0 w-full mb-6 group col-span-2">
