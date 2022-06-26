@@ -1,10 +1,10 @@
 {
   "name": "components-db",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && mkdir .\\dist\\img\\ && copy .\\img\\ .\\dist\\img\\",
     "preview": "vite preview"
   },
   "dependencies": {

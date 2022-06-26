@@ -14,8 +14,8 @@ const Navbar = () => {
                 <Link to="/Details"><div className="inline-flex pr-5 cursor-pointer transform dark:hover:text-violet-400 hover:text-violet-500 hover:scale-110 transition ease-in-out duration-300">Insert</div></Link>
                 <Link to="/Search"><div className="inline-flex pr-5 cursor-pointer transform dark:hover:text-violet-400 hover:text-violet-500 hover:scale-110 transition ease-in-out duration-300">Search</div></Link>
             </div>
-        </nav>        
+        </nav>
     );
 }
- 
+
 export default Navbar;

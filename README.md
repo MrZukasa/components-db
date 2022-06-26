@@ -47,7 +47,7 @@
   - rivenditore3
   - note
   - immagine
-  
+
 ![Database](https://i.ibb.co/4RD3nmq/Cattura.png)
 
 ### Flow
@@ -62,7 +62,7 @@
 - Con [Axios](https://www.npmjs.com/package/axios) si gestiscono gli errori in maniera decisamente più completa vedi [qui](https://www.youtube.com/watch?v=6tEu9Hz7zcU)
 - Aggiungo Framer Motion `npm install framer-motion` e [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroller)
   - Per fare si che sia smooth si usa `<AnimatePresence exitBeforeEnter>` la proprietà exitBeforeEnter serve per non iniziare il render di una animazione fino a che non termina quella prima
-- Aggiungo switch [Dark/Light Mode](https://www.youtube.com/watch?v=2IfTD-muRF4&t=291s) 
+- Aggiungo switch [Dark/Light Mode](https://www.youtube.com/watch?v=2IfTD-muRF4&t=291s)
   - setto la dark mode all'interno della Local Storage
 - Aggiungo la possibilità di inserire un immagine nel [database](https://www.tutsmake.com/upload-image-in-mysql-db-using-node-js-express-multer/) BLOB.
   - Aggiungo [multer](https://www.youtube.com/watch?v=wIOpe8S2Mk8) per far si che il backend possa caricare il file multimediale. `npm install multer`
@@ -75,5 +75,4 @@
 - Ricerca con campi specifici
   - quando si passano dei parametri con axios, da nodejs si leggono come [req.query](https://www.youtube.com/watch?v=zrVjqvavS5U)
 - Carousel in [Tailwind](https://www.youtube.com/watch?v=ho93e0IhdTA)
-
-Provo a fare il deploy su heroku
+- Setto una lingua unica che sarà probabilmente l'inglese

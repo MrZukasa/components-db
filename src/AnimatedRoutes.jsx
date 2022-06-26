@@ -15,7 +15,7 @@ const AnimatedRoutes = () => {
                 <Switch>
                     <Route exact path="/">
                         <Home />
-                    </Route>          
+                    </Route>
                     <Route path="/Details">
                         <Details />
                     </Route>

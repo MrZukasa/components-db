@@ -6,13 +6,13 @@ const changeTheme = () => {
     const colorTheme = theme =='dark'?'light':'dark';
     localStorage.setItem('Tema',theme);
 
-    useEffect(() =>{        
+    useEffect(() =>{
         const root = document.getElementById('root');
         root.classList.remove(colorTheme);
-        root.classList.add(theme);        
+        root.classList.add(theme);
     },[theme])
 
     return[colorTheme, setTheme];
 }
- 
+
 export default changeTheme;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const images = [
-    "../img/background.jpg",    
-    "../img/background1.jpg",    
+    "../img/background.jpg",
+    "../img/background1.jpg",
     "../img/background2.jpg",
 ];
 
@@ -31,12 +31,12 @@ const Carousel = () => {
         animate.current.classList.add('fade-anim');
     }
 
-    const handleNextClick= () => {        
+    const handleNextClick= () => {
         count = (count + 1) % images.length;
         setCurrentIndex(count);
         animate.current.classList.add('fade-anim');
     }
-    
+
     return (
         <div ref={animate} className="select-none flex">
             <div className="flex justify-center">
@@ -57,5 +57,5 @@ const Carousel = () => {
         </div>
     );
 }
- 
+
 export default Carousel;

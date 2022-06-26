@@ -9,5 +9,5 @@ const NotFound = () => {
         </motion.div>
     );
 }
- 
+
 export default NotFound;

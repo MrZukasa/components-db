@@ -25,7 +25,7 @@ const Modal = (modale) => {
                       <div className="relative p-3 flex-auto">
                         <p className="my-4 text-green-500 font-semibold text-center pr-10 pl-10">
                           {modale.response}
-                        </p>                      
+                        </p>
                       </div>
                       {/*footer*/}
                       <div className="flex items-center justify-end p-4 border-t border-solid dark:bg-slate-700 bg-gray-300 border-slate-700 dark:border-slate-300 rounded-b">
@@ -36,7 +36,7 @@ const Modal = (modale) => {
                         </button>
                       </div>
                     </div>
-                  </div>                  
+                  </div>
               </motion.div>
               <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
               </>
@@ -52,10 +52,10 @@ const Modal = (modale) => {
                       <div className="flex items-start justify-between p-5 border-b border-solid dark:bg-slate-700 bg-gray-300 border-slate-700 dark:border-slate-300 rounded-t">
                         <p className="text-2xl font-semibold">
                           Information
-                        </p>                      
+                        </p>
                       </div>
                       {/*body*/}
-                      <div className="relative p-3 flex-auto">                      
+                      <div className="relative p-3 flex-auto">
                         <p className="my-4 text-red-500 font-semibold text-center pr-10 pl-10">
                           {modale.response}
                         </p>
@@ -69,12 +69,12 @@ const Modal = (modale) => {
                         </button>
                       </div>
                     </div>
-                  </div>                  
+                  </div>
               </motion.div>
               <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
               </>
       );
     }
 }
- 
+
 export default Modal;

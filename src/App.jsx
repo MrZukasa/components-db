@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />          
+        <Navbar />
           <AnimatedRoutes />
         <Footer />
       </div>
