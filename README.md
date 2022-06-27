@@ -77,3 +77,4 @@
 - Carousel in [Tailwind](https://www.youtube.com/watch?v=ho93e0IhdTA)
 - Setto una lingua unica che sarà probabilmente l'inglese
 - Per wrappare tutto dentro un Electron devo sistemare il backend su heroku, [questo](https://www.youtube.com/watch?v=lwOsI8LtVEQ) potrebbe aiutare
+  - per fare ciò devo dividere frontend e backend in due cartelle diverse, cosi da creare package json diversi e npm module diversi.
