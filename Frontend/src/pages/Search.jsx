@@ -45,7 +45,8 @@ const Search = () => {
         })
       }
 
-      return await axios.get('http://localhost:3001/Read/',{
+      // return await axios.get('http://localhost:3001/Read/',{
+      return await axios.get('https://components-db-backend.herokuapp.com/Read/',{
         params:{
           codice : componente.codice,
           codiceCostruttore : componente.codiceCostruttore,

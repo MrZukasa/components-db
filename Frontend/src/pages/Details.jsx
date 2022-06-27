@@ -43,7 +43,8 @@ const Details = () => {
     const insert = (e) => {
         e.preventDefault();
         async function insertData(componente){
-            return await axios.post("http://localhost:3001/Insert",{
+            // return await axios.post("http://localhost:3001/Insert",{
+            return await axios.post("https://components-db-backend.herokuapp.com/Insert",{
                     codice : componente.codice,
                     codiceCostruttore : componente.codiceCostruttore,
                     descrizione : componente.descrizione,
@@ -65,7 +66,8 @@ const Details = () => {
             }
         };
         async function insertIMG(){
-            return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config);
+            // return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config);
+            return await axios.patch("https://components-db-backend.herokuapp.com/Upload/" + codice, formData, config);
         }
 
         insertData(componente)

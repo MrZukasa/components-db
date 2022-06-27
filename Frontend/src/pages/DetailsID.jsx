@@ -32,7 +32,8 @@ const DetailsID = () => {
 
     useEffect(() => {
         async function readData() {
-            return await axios.get('http://localhost:3001/Read/'+ clearID[1])
+            // return await axios.get('http://localhost:3001/Read/'+ clearID[1])
+            return await axios.get('https://components-db-backend.herokuapp.com/Read/'+ clearID[1])
         }
         readData()
         .then((responseData) => {
@@ -58,7 +59,8 @@ const DetailsID = () => {
 
     const Remove = ()=> {
         async function deleteData(){
-            return await axios.delete('http://localhost:3001/Delete/'+ clearID[1])
+            // return await axios.delete('http://localhost:3001/Delete/'+ clearID[1])
+            return await axios.delete('https://components-db-backend.herokuapp.com/Delete/'+ clearID[1])
         }
         deleteData()
             .then(() => setResponse('Deleted Successfully!'))
@@ -69,7 +71,8 @@ const DetailsID = () => {
     const Edit = ()=> {
         if ((componente.codice != '')&&(componente.descrizione != '')&&(!isNaN(componente.quantita))&&(componente.quantita != '')){
             async function updateData(componente){
-                return await axios.patch("http://localhost:3001/Update/"+clearID[1],{
+                // return await axios.patch("http://localhost:3001/Update/"+clearID[1],{
+                return await axios.patch("https://components-db-backend.herokuapp.com/Update/"+clearID[1],{
                     codice : componente.codice,
                     codiceCostruttore : componente.codiceCostruttore,
                     descrizione : componente.descrizione,
@@ -91,7 +94,8 @@ const DetailsID = () => {
                 }
             };
             async function updateIMG(){
-                return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config)
+                // return await axios.patch("http://localhost:3001/Upload/" + codice, formData, config)
+                return await axios.patch("https://components-db-backend.herokuapp.com/Upload/" + codice, formData, config)
             }
 
         updateData(componente)
