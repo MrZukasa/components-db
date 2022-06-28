@@ -1,5 +1,4 @@
 ### DB componenti Tailwind-Vite/React-MySql 🧁
-
 - Creo il progetto Vite-React con `npm init vite`
 - Aggiungo Tailwind con
   ```
@@ -34,20 +33,6 @@
 ### Ipotesi DB
 - Database 'Archivio'
 - Tabella 'Componenti'
-- Campi:
-  - id
-  - codice custom
-  - codice costruttore
-  - descirizione
-  - quantita
-  - posizione
-  - costruttore
-  - rivenditore1
-  - rivenditore2
-  - rivenditore3
-  - note
-  - immagine
-
 ![Database](https://i.ibb.co/4RD3nmq/Cattura.png)
 
 ### Flow
@@ -81,3 +66,22 @@
   - Primo commit progetto splittato
   - Backend [URL](https://components-db-backend.herokuapp.com/)
 - Il Frontend è sistemato su [Netlify](https://componentsdb.netlify.app/)
+  - redirect necessario per avere la pagina 404 su netlify vedi file netlify.toml
+- Per il backend è necessario cambiare la connessione in pool per evitare il timeout
+  ```
+  This is because the MySQL server on ClearDB closed the connection. You can detect the disconnect event, then recreate the connection.
+
+  More info here: https://bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/
+
+  const mysql = require("mysql");
+  const dbConfig = require("../config/db.config.js");
+
+  var connection = mysql.createPool({
+    host: dbConfig.HOST,
+    user: dbConfig.USER,
+    password: dbConfig.PASSWORD,
+    database: dbConfig.DB
+  });
+
+  module.exports = connection;
+  ```
