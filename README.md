@@ -80,3 +80,4 @@
   - per fare ciò devo dividere frontend e backend in due cartelle diverse, cosi da creare package json diversi e npm module diversi.
   - Primo commit progetto splittato
   - Backend [URL](https://components-db-backend.herokuapp.com/)
+- Il Frontend è sistemato su [Netlify](https://componentsdb.netlify.app/)

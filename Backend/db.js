@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-
 const multer = require('multer');
 // const path = require('path');
 // const storage = multer.diskStorage({
@@ -32,7 +31,8 @@ const user = process.env.USER;
 const pw = process.env.PASSWORD;
 const database = process.env.DATABASE;
 
-const db = mysql.createConnection({
+// const db = mysql.createConnection({
+const db = mysql.createPool({
     host: host,
     user: user,
     password: pw,
