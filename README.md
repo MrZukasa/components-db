@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/68e4c337-155c-4e0a-b9a6-6365efc5cc25/deploy-status)](https://app.netlify.com/sites/componentsdb/deploys)
 ## DB componenti Tailwind-Vite/React-MySql 🧁
 ### Flow 🐎
 - Creo il progetto Vite-React con `npm init vite`
