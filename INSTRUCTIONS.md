@@ -21,7 +21,7 @@ Done that, you need confugire the database that serve the backend directry in yo
 The DB structure that i use in this project is the following:
 - Database name 'Archivio'
 - Table name 'Componenti'
-    ![Database](https://i.ibb.co/4RD3nmq/Cattura.png)
+- ![Database](https://i.ibb.co/4RD3nmq/Cattura.png)
 
 This is what you have to replicate on heroku database in order to make things work.
 
